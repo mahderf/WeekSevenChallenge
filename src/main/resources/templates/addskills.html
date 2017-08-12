@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Skills</title>
+
+</head>
+
+<body>
+<form action="#" th:action="@{/addskills}" th:object="${roboskills}" method="post">
+    <p align="center">Skills: <input type="text" th:field="*{skillname}"/>
+        <span th:if="${#fields.hasErrors('skillname')}" th:errors="*{skillname}">Skill Error</span></p>
+    <p align="center">Rating(Advanced,Beginner or Intermidate): <input type="text" th:field="*{rating}"/>
+        <span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Last Name Error</span></p>
+
+    <p align="center"><input type="submit" value="Enter" /></p>
+
+</form>
+
+</body>
+</html>

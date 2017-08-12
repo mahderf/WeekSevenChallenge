@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Information Entered</title>
+</head>
+
+<body>
+
+<p  align="center" th:text="'Field of Study: '+ ${roboeducation.fieldofstudy}" />
+<p  align="center" th:text="'Year Graduated: '+ ${roboeducation.year}" />
+<p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" />
+
+<h2></h2>
+<a href="/addeducation">Add Another Education</a>
+<a href="/addworkexperience">Next</a>
+
+</body>
+
+</html>

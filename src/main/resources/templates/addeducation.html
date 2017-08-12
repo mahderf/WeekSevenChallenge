@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome to the Book Database</title>
+
+</head>
+<h2>Please start from your Recent Education</h2>
+<body>
+<form action="#" th:action="@{/addeducation}" th:object="${roboeducation}" method="post">
+    <p align="center">Field of Study: <input type="text" th:field="*{fieldofstudy}"/>
+        <span th:if="${#fields.hasErrors('fieldofstudy')}" th:errors="*{fieldofstudy}">Field of Study Error</span></p>
+    <p align="center">Intstitute: <input type="text" th:field="*{institute}"/>
+        <span th:if="${#fields.hasErrors('institute')}" th:errors="*{institute}">Institute Error</span></p>
+
+    <p align="center">Year Graduated: <input type="text" th:field="*{year}"/>
+        <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Email Address Error</span></p>
+
+    <p align="center"><input type="submit" value="Enter" /> </p>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome to the Book Database</title>
+
+</head>
+<H2>Please Start form your most Recent Experience</H2>
+<body>
+<form action="#" th:action="@{/addworkexperience}" th:object="${robowork}" method="post">
+    <p align="center">Organization: <input type="text" th:field="*{organization}"/>
+        <span th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Organization Error</span></p>
+    <p align="center">Position: <input type="text" th:field="*{position}"/>
+        <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Position Error</span></p>
+
+    <p align="center">Start Date: <input type="text" th:field="*{startdate}"/>
+        <span th:if="${#fields.hasErrors('startdate')}" th:errors="*{startdate}">Start Date Error</span></p>
+
+    <p align="center">End Date: <input type="text" th:field="*{enddate}"/>
+        <span th:if="${#fields.hasErrors('enddate')}" th:errors="*{enddate}">End Date Error</span></p>
+
+    <p align="center">Dutys(enter as many separated by Comma): <input type="text" th:field="*{duty}"/>
+        <span th:if="${#fields.hasErrors('duty')}" th:errors="*{duty}">Duty Error</span></p>
+
+    <p align="center"><input type="submit" value="Enter" /> </p>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Resume</title>
+
+</head>
+
+<body>
+<p  th:text="'First Name: '+ ${robo.firstname}" />
+<p  th:text="'First Name: '+ ${robo.lastname}" />
+<p  th:text="'First Name: '+ ${robo.email}" />
+
+<p th:each="p:${robo.educationlist}">
+
+<p  th:text="'First Name: '+ ${p.fieldofstudy}" />
+<p  th:text="'First Name: '+ ${p.institute}" />
+<p  th:text="'First Name: '+ ${p.year}" />
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Information Entered</title>
+</head>
+
+<body>
+
+<p  align="center" th:text="'Organization: '+ ${robowork.organization}" />
+<p  align="center" th:text="'Position: '+ ${robowork.position}" />
+<p  align="center" th:text="'Start Date: '+ ${robowork.startdate}" />
+<p  align="center" th:text="'End Date: '+ ${robowork.enddate}" />
+<p  align="center" th:text="'Duties: '+ ${robowork.duty}" />
+
+<h2></h2>
+
+<a href="/addskills">Next</a>
+
+
+
+</body>
+
+</html>

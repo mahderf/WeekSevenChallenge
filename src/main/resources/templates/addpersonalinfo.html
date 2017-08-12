@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add personal Information</title>
+
+</head>
+
+<body>
+<form action="#" th:action="@{/addpersonalinfo}" th:object="${robopersonal}" method="post">
+    <p align="center">First Name: <input type="text" th:field="*{firstname}"/>
+        <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">First Name Error</span></p>
+    <p align="center">Last Name: <input type="text" th:field="*{lastname}"/>
+        <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Last Name Error</span></p>
+
+    <p align="center">Employee Email: <input type="text" th:field="*{email}"/>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Address Error</span></p>
+
+
+    <p align="center"><input type="submit" value="Enter" /> </p>
+
+</form>
+
+</body>
+</html>
