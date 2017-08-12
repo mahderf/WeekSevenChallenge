@@ -11,12 +11,27 @@
 <p  th:text="'First Name: '+ ${robo.lastname}" />
 <p  th:text="'First Name: '+ ${robo.email}" />
 
-<p th:each="p:${robo.educationlist}">
 
-<p  th:text="'First Name: '+ ${p.fieldofstudy}" />
-<p  th:text="'First Name: '+ ${p.institute}" />
-<p  th:text="'First Name: '+ ${p.year}" />
 
+<div th:each="p:${robo.experiences}">
+
+    <p  th:text="'Field: '+ ${p.organization}" />
+    <p  th:text="'Field: '+ ${p.position}" />
+    <p  th:text="'Field: '+ ${p.startdate}" />
+    <p  th:text="'Field: '+ ${p.enddate}" />
+    <p  th:text="'Field: '+ ${p.position}" />
+    <p  th:text="'Field: '+ ${p.duty}" />
+
+</div>
+
+
+<div th:each="p:${robo.newskills}">
+
+    <p  th:text="'Field: '+ ${p.skillname}" />
+    <p  th:text="'Field: '+ ${p.rating}" />
+
+</div>
 
 </body>
+
 </html>

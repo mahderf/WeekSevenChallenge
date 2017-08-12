@@ -113,12 +113,13 @@ public class MainController {
 
     @GetMapping("/viewresume")
 
-    public String PostResume(Model model, RoboResume newrob)
+    public String PostResume(Model model)
     {
         RoboResume rbdata=resumeRepository.findOne(new Long(1));
 
         ArrayList<Education>educationlist=((ArrayList<Education>) educationRepository.findAll());
          rbdata.setEducations(educationlist);
+       model.addAttribute("test", educationlist);
 
         ArrayList<WorkExperience>worklist=((ArrayList<WorkExperience>)workRepository.findAll());
         rbdata.setExperiences(worklist);
@@ -126,13 +127,13 @@ public class MainController {
         ArrayList<Skills>skilllist=((ArrayList<Skills>)skillsRepository.findAll());
         rbdata.setNewskills(skilllist);
 
-      model.addAttribute("robo", rbdata );
 
-    for(WorkExperience item: worklist) {
+
+    for(WorkExperience item: rbdata.getExperiences()) {
         System.out.println(item.getOrganization()+item.getPosition()+item.getDuty()+item.getStartdate()+item.getStartdate());
 
     }
-    for(Education item: educationlist) {
+    for(Education item: rbdata.getEducations()) {
         System.out.println(item.getFieldofstudy()+item.getInstitute()+item.getYear());
 
     }
@@ -142,6 +143,9 @@ public class MainController {
     }
         System.out.println(rbdata.getFirstname());
         System.out.println(rbdata.getLastname());
+
+        model.addAttribute("robo", rbdata );
                 return "viewresume";
     }
+
 }
