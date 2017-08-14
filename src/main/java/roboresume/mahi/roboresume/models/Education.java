@@ -20,8 +20,8 @@ public class Education {
     @Size(max=60)
     private String fieldofstudy;
 
-    @DateTimeFormat(pattern="yyyy")
-    private Date year;
+
+    private String year;
     @Size(max=40)
     private String institute;
 
@@ -33,11 +33,11 @@ public class Education {
         this.fieldofstudy = fieldofstudy;
     }
 
-    public Date getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
