@@ -9,7 +9,10 @@ div
     color:black;
     text-decoration-color: black;
 }
-
+a
+{
+    color:black;
+}
 textarea{
 
     color:gray;
