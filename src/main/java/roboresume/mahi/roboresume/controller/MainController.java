@@ -128,22 +128,6 @@ public class MainController {
         rbdata.setNewskills(skilllist);
 
 
-
-    for(WorkExperience item: rbdata.getExperiences()) {
-        System.out.println(item.getOrganization()+item.getPosition()+item.getDuty()+item.getStartdate()+item.getStartdate());
-
-    }
-    for(Education item: rbdata.getEducations()) {
-        System.out.println(item.getFieldofstudy()+item.getInstitute()+item.getYear());
-
-    }
-    for(Skills item: skilllist) {
-        System.out.println(item.getSkillname()+item.getRating());
-
-    }
-        System.out.println(rbdata.getFirstname());
-        System.out.println(rbdata.getLastname());
-
         model.addAttribute("robo", rbdata );
                 return "viewresume";
     }
