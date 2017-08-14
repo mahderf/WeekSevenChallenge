@@ -82,10 +82,6 @@
                             <div class="container">
                                 <hr />
                                 <div>
-                                    <div>
-                                        <h5>============================================================================</h5>
-
-                                    </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
 
@@ -156,7 +152,7 @@
                                             <div class="panel-body">
                                                 <div th:each="p:${robo.newskills}">
 
-                                                    <p  th:text=" ${p.skillname} +' '+ ${p.rating}" />
+                                                    <p  th:text=" ${p.skillname} +', '+ ${p.rating}" />
 
 
                                                 </div>
