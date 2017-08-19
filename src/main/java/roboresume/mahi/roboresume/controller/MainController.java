@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import roboresume.mahi.roboresume.models.Education;
 import roboresume.mahi.roboresume.models.RoboResume;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 @Controller
 public class MainController {
     @Autowired
-    ResumeRepository resumeRepository;
+   ResumeRepository resumeRepository;
     @Autowired
     EducationRepository educationRepository;
     @Autowired
@@ -92,6 +93,7 @@ public class MainController {
             return "addworkexperience";
         }
         workRepository.save(otherwork);
+        System.out.println(otherwork.getEnddate());
         return "workresult";
     }
 
@@ -132,4 +134,47 @@ public class MainController {
                 return "viewresume";
     }
 
+    @GetMapping("/test")
+    public String showTable(Model model, RoboResume test)
+    {
+        RoboResume rbdata=resumeRepository.findOne(new Long(1));
+        model.addAttribute("robo",rbdata);
+        return"resumetable";
+    }
+    @GetMapping("/updateperson/{id}")
+    public String editPerson(@PathVariable("id") long id, Model model){
+        model.addAttribute("robopersonal", resumeRepository.findOne(id));
+        return "addpersonalinfo";
+    }
+    @GetMapping("/updateeducation/{id}")
+    public String updateEducation(@PathVariable("id") long id, Model model){
+        model.addAttribute("roboeducation", educationRepository.findOne(id));
+        return "addeducation";
+    }
+    @GetMapping("/updateexperience/{id}")
+    public String updateExperience(@PathVariable("id") long id, Model model){
+        model.addAttribute("robowork", workRepository.findOne(id));
+        return "addworkexperience";
+    }
+    @GetMapping("/updateskill/{id}")
+    public String updateSkill(@PathVariable("id") long id, Model model){
+        model.addAttribute("roboskills", skillsRepository.findOne(id));
+        return "addskills";
+    }
+
+    @GetMapping("/deleteeducation/{id}")
+    public String deleteEducation(@PathVariable("id") long id){
+        educationRepository.delete(id);
+        return "redirect:/educationresult";
+    }
+    @GetMapping("/deletework/{id}")
+    public String deleteWork(@PathVariable("id") long id){
+        workRepository.delete(id);
+        return "redirect:workresult";
+    }
+    @GetMapping("/deleteeducation/{id}")
+    public String deleteSkill(@PathVariable("id") long id){
+        skillsRepository.delete(id);
+        return "redirect:skillsresult";
+    }
 }
