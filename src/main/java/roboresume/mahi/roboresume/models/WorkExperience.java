@@ -16,10 +16,10 @@ public class WorkExperience {
     private long id;
     private String organization;
     private String position;
-
-    private String startdate;
-
-    private String enddate;
+    @DateTimeFormat(pattern ="MMM,yyyy")
+    private Date startdate;
+    @DateTimeFormat(pattern ="MMM,yyyy")
+    private Date enddate;
     private String duty;
 
     public String getOrganization() {
@@ -38,19 +38,19 @@ public class WorkExperience {
         this.position = position;
     }
 
-    public String getStartdate() {
+    public Date getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(String startdate) {
+    public void setStartdate(Date startdate) {
         this.startdate = startdate;
     }
 
-    public String getEnddate() {
+    public Date getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(String enddate) {
+    public void setEnddate(Date enddate) {
         this.enddate = enddate;
     }
 

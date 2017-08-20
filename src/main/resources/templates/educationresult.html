@@ -77,7 +77,7 @@
                         <section class="section-form">
                             <h1>Information Entered</h1>
                             <p  align="center" th:text="'Field of Study: '+ ${roboeducation.fieldofstudy}" />
-                            <p  align="center" th:text="'Year Graduated: '+ ${roboeducation.year}" />
+                            <p  align="center" th:text="'Year Graduated: '+ ${#dates.format(roboeducation.year, 'yyyy')}" />
                             <p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" />
 
                             <div class="form-footer">

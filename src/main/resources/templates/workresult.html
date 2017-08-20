@@ -78,8 +78,8 @@
                             <h1>Information Entered</h1>
                             <p  align="center" th:text="'Organization: '+ ${robowork.organization}" />
                             <p  align="center" th:text="'Position: '+ ${robowork.position}" />
-                            <p  align="center" th:text="'Start Date: '+ ${robowork.startdate}" />
-                            <p  align="center" th:text="'End Date: '+ ${robowork.enddate}" />
+                            <p  align="center" th:text="'Start Date: '+ ${#dates.format(robowork.startdate, 'MMM,yyyy')}" />
+                            <p  align="center" th:text="'End Date: '+ ${#dates.format(robowork.enddate, 'MMM,yyyy')}" />
                             <p  align="center" th:text="'Duties: '+ ${robowork.duty}" />
 
                             <div class="form-footer">
@@ -91,8 +91,8 @@
 
                                 <a button type= "button"  href="/addskills" class="btn btn-primary">Next</a>
                             </div>
-                            <a th:href="@{/updateexperience/{id}(id=${robowork.id})}" th:if="${numberOfEdu>0}" class="active">Edit</a> -
-                            <a th:href="@{/deletework/{id}(id=${robowork.id})}" th:if="${numberOfEdu>1}" class="active">Delete</a>
+                            <a th:href="@{/updateexperience/{id}(id=${robowork.id})}" th:if="${numberOfExpr>0}" class="active">Edit</a>
+                            <a th:href="@{/deletework/{id}(id=${robowork.id})}" th:if="${numberOfExpr>1}" class="active">Delete</a>
 
                         </section>
                     </main>
