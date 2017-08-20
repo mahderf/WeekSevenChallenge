@@ -81,7 +81,7 @@
                             <p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" />
 
                             <div class="form-footer">
-                                <a button type="button" href="/addeducation" class="btn btn-default"  >Add Another Eduation</button> </a>
+                                <a button type="button" href="/addeducation" class="btn btn-default" th:if="${numberOfEdu<10}" class="active">Add Another Eduation</button> </a>
 
                             </div>
                             <div class="form-footer">
@@ -90,6 +90,8 @@
                             </div>
 
 
+                            <a th:href="@{/updateeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>0}" class="active">Edit</a> -
+                            <a th:href="@{/deleteeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>1}" class="active">Delete</a>
 
                         </section>
                     </main>

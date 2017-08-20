@@ -50,13 +50,15 @@ public class MainController {
     }
 
     @PostMapping("/addpersonalinfo")
-    public String PostInfo(@Valid @ModelAttribute("robopersonal") RoboResume otherpersonal, BindingResult bindingResult)
+    public String PostInfo(@Valid @ModelAttribute("robopersonal") RoboResume otherpersonal, BindingResult bindingResult,
+                           Model model)
     {
         if(bindingResult.hasErrors())
         {
             return "addpersonalinfo";
         }
         resumeRepository.save(otherpersonal);
+        model.addAttribute("numberOfPerson", resumeRepository.count());
         return "personalresult";
     }
 
@@ -69,13 +71,15 @@ public class MainController {
     }
 
     @PostMapping("/addeducation")
-    public String PostEducation(@Valid @ModelAttribute("roboeducation") Education othereducation, BindingResult bindingResult)
+    public String PostEducation(@Valid @ModelAttribute("roboeducation") Education othereducation, BindingResult
+            bindingResult, Model model)
     {
         if(bindingResult.hasErrors())
         {
             return "addeducation";
         }
         educationRepository.save(othereducation);
+        model.addAttribute("numberOfEdu",educationRepository.count());
         return "educationresult";
     }
     @GetMapping("/addworkexperience")
@@ -86,7 +90,8 @@ public class MainController {
        return "addworkexperience";
     }
     @PostMapping("/addworkexperience")
-    public String PostWork(@Valid @ModelAttribute("robowork") WorkExperience otherwork, BindingResult bindingResult)
+    public String PostWork(@Valid @ModelAttribute("robowork") WorkExperience otherwork, BindingResult bindingResult,
+                            Model model)
     {
         if(bindingResult.hasErrors())
         {
@@ -94,6 +99,7 @@ public class MainController {
         }
         workRepository.save(otherwork);
         System.out.println(otherwork.getEnddate());
+        model.addAttribute("numberOfExpr",workRepository.count());
         return "workresult";
     }
 
@@ -105,11 +111,14 @@ public class MainController {
         return "addskills";
     }
     @PostMapping("/addskills")
-    public String PostSkill(@Valid @ModelAttribute("roboskills") Skills otherskills, BindingResult bindingResult) {
+    public String PostSkill(@Valid @ModelAttribute("roboskills") Skills otherskills, BindingResult bindingResult,
+              Model model)
+    {
         if (bindingResult.hasErrors()) {
             return "addskills";
         }
         skillsRepository.save(otherskills);
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "skillsresult";
     }
 
@@ -165,16 +174,16 @@ public class MainController {
     @GetMapping("/deleteeducation/{id}")
     public String deleteEducation(@PathVariable("id") long id){
         educationRepository.delete(id);
-        return "redirect:/educationresult";
+        return "redirect:/viewresume";
     }
     @GetMapping("/deletework/{id}")
     public String deleteWork(@PathVariable("id") long id){
         workRepository.delete(id);
-        return "redirect:workresult";
+        return "redirect:/viewresume";
     }
-    @GetMapping("/deleteeducation/{id}")
+    @GetMapping("/deleteskill/{id}")
     public String deleteSkill(@PathVariable("id") long id){
         skillsRepository.delete(id);
-        return "redirect:skillsresult";
+        return "redirect:/viewresume";
     }
 }

@@ -83,14 +83,16 @@
                             <p  align="center" th:text="'Duties: '+ ${robowork.duty}" />
 
                             <div class="form-footer">
-                                <a button type="button"  href="/addworkexperience" class="btn btn-primary">Add Another Experience</a>
+                                <a button type="button"  href="/addworkexperience" class="btn btn-primary"
+                                   th:if="${numberOfExpr<10}" class="active">Add Another Experience</a>
 
                             </div>
                             <div class="form-footer">
 
                                 <a button type= "button"  href="/addskills" class="btn btn-primary">Next</a>
                             </div>
-
+                            <a th:href="@{/updateexperience/{id}(id=${robowork.id})}" th:if="${numberOfEdu>0}" class="active">Edit</a> -
+                            <a th:href="@{/deletework/{id}(id=${robowork.id})}" th:if="${numberOfEdu>1}" class="active">Delete</a>
 
                         </section>
                     </main>

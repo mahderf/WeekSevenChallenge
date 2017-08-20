@@ -80,12 +80,14 @@
                             <p  align="center" th:text="'Rating: '+ ${roboskills.rating}" />
 
                             <div class="form-footer">
-                                <a button type="button" href="/addskills" class="btn btn-primary" >Add Another Skill</a>
+                                <a button type="button" href="/addskills" class="btn btn-primary" th:if="${numberOfSkill<20}" class="active">Add Another Skill</a>
                             </div>
                             <div class="form-footer">
                                 <a button type="button" href="/viewresume" class="btn btn-primary" >View Resume</a>
                             </div>
 
+                            <a th:href="@{/updateskill/{id}(id=${roboskills.id})}"th:if="${numberOfSkill>0}" class="active">Edit</a> -
+                            <a th:href="@{/deleteskill/{id}(id=${roboskills.id})}" th:if="${numberOfSkill>1}" class="active">Delete</a>
 
                         </section>
                     </main>
