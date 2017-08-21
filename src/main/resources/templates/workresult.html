@@ -78,8 +78,8 @@
                             <h1>Information Entered</h1>
                             <p  align="center" th:text="'Organization: '+ ${robowork.organization}" />
                             <p  align="center" th:text="'Position: '+ ${robowork.position}" />
-                            <p  align="center" th:text="'Start Date: '+ ${#dates.format(robowork.startdate, 'MMM,yyyy')}" />
-                            <p  align="center" th:text="'End Date: '+ ${#dates.format(robowork.enddate, 'MMM,yyyy')}" />
+                            <p  align="center" th:text="'Start Date: '+ ${{robowork.startdate}}" />
+                            <p  align="center" th:text="'End Date: '+ ${{robowork.enddate}}" />
                             <p  align="center" th:text="'Duties: '+ ${robowork.duty}" />
 
                             <div class="form-footer">

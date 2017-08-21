@@ -22,7 +22,6 @@
     <!-- Theme CSS -->
     <link href="../css/grayscale.min.css" rel="stylesheet">
     <link href="../css/newfile.css" rel="stylesheet">
-    <link href="../css/tablecss.css" rel="stylesheet">
     <link href="../css/navcss.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,26 +36,42 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 <!-- Navigation -->
-<header class="main-header">
-    <!--<h1>Your Logo Here</h1>-->
-    <nav>
-        <ul>
-            <li>
-                <a class="page-scroll" href="/">Robo Home</a>
-            </li>
-            <li>
-                <a class="page-scroll" href="/viewresume">View resume</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="/addpersonalinfo">
+                <i class="fa fa-play-circle"></i> <span class="light">Start</span> Robo
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+
+                <li>
+                    <a class="page-scroll" href="/">Robo Home</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
 
 <!-- Intro Header -->
 <header class="intro">
     <div class="intro-body">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-1">
+                <div class="col-md-6 col-md-offset-1" class="row=5">
                     <div class="toaster"></div>
 
                         <section>
@@ -91,7 +106,7 @@
 
                                                 <div th:each="p:${robo.educations}">
                                                     <p th:text="${p.fieldofstudy}" />
-                                                    <p th:text=" ${p.institute} +', '+ ${p.year}"/>
+                                                    <p th:text=" ${p.institute} +', '+ ${{p.year}}"/>
 
                                                 </div>
                                             </div>
@@ -112,7 +127,7 @@
 
                                                 <div th:each="p:${robo.experiences}">
                                                     <p  th:text="${p.position}" />
-                                                    <p  th:text=" ${p.organization} +', '+ ${p.startdate}+'-'+ ${p.enddate}"/>
+                                                    <p  th:text=" ${p.organization} +', '+ ${{p.startdate}}+'-'+ ${{p.enddate}}"/>
                                                     <p  th:text="'-'+ ${p.duty}" />
 
                                                 </div>
