@@ -12,16 +12,16 @@
     <title>Robo Resume</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
-    <link href="css/newfile.css" rel="stylesheet">
+    <link href="../css/grayscale.min.css" rel="stylesheet">
+    <link href="../css/newfile.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -215,10 +215,10 @@
 
 
 <!-- jQuery -->
-<script src="vendor/jquery/jquery.js"></script>
+<script src="../vendor/jquery/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
@@ -227,40 +227,8 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
 <!-- Theme JavaScript -->
-<script src="js/grayscale.min.js"></script>
+<script src="../js/grayscale.min.js"></script>
 
 </body>
 
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Welcome to the Book Database</title>
-
-</head>
-<H2>Please Start form your most Recent Experience</H2>
-<body>
-<form action="#" th:action="@{/addworkexperience}" th:object="${robowork}" method="post">
-    <p align="center">Organization: <input type="text" th:field="*{organization}"/>
-        <span th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Organization Error</span></p>
-    <p align="center">Position: <input type="text" th:field="*{position}"/>
-        <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Position Error</span></p>
-
-    <p align="center">Start Date: <input type="text" th:field="*{startdate}"/>
-        <span th:if="${#fields.hasErrors('startdate')}" th:errors="*{startdate}">Start Date Error</span></p>
-
-    <p align="center">End Date: <input type="text" th:field="*{enddate}"/>
-        <span th:if="${#fields.hasErrors('enddate')}" th:errors="*{enddate}">End Date Error</span></p>
-
-    <p align="center">Dutys(enter as many separated by Comma): <input type="text" th:field="*{duty}"/>
-        <span th:if="${#fields.hasErrors('duty')}" th:errors="*{duty}">Duty Error</span></p>
-
-    <p align="center"><input type="submit" value="Enter" /> </p>
-
-</form>
-
-</body>
 </html>

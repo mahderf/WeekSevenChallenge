@@ -23,7 +23,7 @@
     <!-- Theme CSS -->
     <link href="../css/grayscale.min.css" rel="stylesheet">
     <link href="../css/newfile.css" rel="stylesheet">
-    <link href="../css/tablecss.css" rel="stylesheet">
+    <!--<link href="../css/tablecss.css" rel="stylesheet">-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,6 +68,7 @@
 </nav>
 
 <!-- Intro Header -->
+
 <header class="intro">
     <div class="intro-body">
         <div class="container">
@@ -88,9 +89,9 @@
                                 <a  button type="button"  href="/addeducation" class="btn btn-default" >Next</a>
 
                             </div>
-
+                            <div class="form-footer">
                             <a th:href="@{/updateperson/{id}(id=${robopersonal.id})}" th:if="${numberOfPerson=1}" class="active">Edit</a>
-
+                            </div>
                         </section>
 
 

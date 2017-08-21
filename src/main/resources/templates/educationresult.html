@@ -77,11 +77,12 @@
                         <section class="section-form">
                             <h1>Information Entered</h1>
                             <p  align="center" th:text="'Field of Study: '+ ${roboeducation.fieldofstudy}" />
-                            <p  align="center" th:text="'Year Graduated: '+ ${#dates.format(roboeducation.year, 'yyyy')}" />
+                            <p  align="center" th:text="'Year Graduated: '+ ${roboeducation.year}" />
                             <p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" />
 
                             <div class="form-footer">
-                                <a button type="button" href="/addeducation" class="btn btn-default" th:if="${numberOfEdu<10}" class="active">Add Another Eduation</button> </a>
+                                <a href="/addeducation"  th:if="${numberOfEdu<10}"
+                                   class="active" class="btn btn-primay">Add Another Eduation</button> </a>
 
                             </div>
                             <div class="form-footer">
@@ -89,9 +90,14 @@
                                 <a button type= "button" href="/addworkexperience" class="btn btn-primary" >Next</button></a>
                             </div>
 
-
-                            <a th:href="@{/updateeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>0}" class="active">Edit</a> -
-                            <a th:href="@{/deleteeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>1}" class="active">Delete</a>
+                            <div class="form-footer">
+                            <a th:href="@{/updateeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>0}"
+                               class="active" class="btn btn-primary" >Edit</a>
+                            </div>
+                            <div class="form-footer">
+                            <a th:href="@{/deleteeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>1}"
+                               class="active" class="btn btn-primary" >Delete</a>
+                            </div>
 
                         </section>
                     </main>
