@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,12 +18,14 @@ public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
     @Size(max=60)
     private String fieldofstudy;
 
     @DateTimeFormat(pattern ="yyyy")
     private Date year;
     @Size(max=40)
+    @NotNull
     private String institute;
 
     public String getFieldofstudy() {
