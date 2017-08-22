@@ -1,5 +1,6 @@
 package roboresume.mahi.roboresume.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -18,14 +19,14 @@ public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
+    @NotEmpty
     @Size(max=60)
     private String fieldofstudy;
-
+    @NotNull
     @DateTimeFormat(pattern ="yyyy")
     private Date year;
+    @NotEmpty
     @Size(max=40)
-    @NotNull
     private String institute;
 
     public String getFieldofstudy() {

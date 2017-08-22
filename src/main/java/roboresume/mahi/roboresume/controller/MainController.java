@@ -147,6 +147,15 @@ public class MainController {
     public String showTable(Model model, RoboResume test)
     {
         RoboResume rbdata=resumeRepository.findOne(new Long(1));
+        ArrayList<Education>educationlist=((ArrayList<Education>) educationRepository.findAll());
+        rbdata.setEducations(educationlist);
+        model.addAttribute("test", educationlist);
+
+        ArrayList<WorkExperience>worklist=((ArrayList<WorkExperience>)workRepository.findAll());
+        rbdata.setExperiences(worklist);
+
+        ArrayList<Skills>skilllist=((ArrayList<Skills>)skillsRepository.findAll());
+        rbdata.setNewskills(skilllist);
         model.addAttribute("robo",rbdata);
         return"resumetable";
     }

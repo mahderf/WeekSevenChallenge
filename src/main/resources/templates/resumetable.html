@@ -36,37 +36,37 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand page-scroll" href="/addpersonalinfo">
-                <i class="fa fa-play-circle"></i> <span class="light">Start</span> Robo
-            </a>
-        </div>
+<!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
+    <!--<div class="container">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">-->
+                <!--Menu <i class="fa fa-bars"></i>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand page-scroll" href="/addpersonalinfo">-->
+                <!--<i class="fa fa-play-circle"></i> <span class="light">Start</span> Robo-->
+            <!--</a>-->
+        <!--</div>-->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/viewresume">View resume</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/">Robo Home</a>
-                </li>
+        <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+        <!--<div class="collapse navbar-collapse navbar-right navbar-main-collapse">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--&lt;!&ndash; Hidden li included to remove active class from about link when scrolled up past about section &ndash;&gt;-->
+                <!--<li class="hidden">-->
+                    <!--<a href="#page-top"></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a class="page-scroll" href="/viewresume">View resume</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a class="page-scroll" href="/">Robo Home</a>-->
+                <!--</li>-->
 
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
+            <!--</ul>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.container &ndash;&gt;-->
+<!--</nav>-->
 
 <!-- Intro Header -->
 <header class="intro">
@@ -75,7 +75,6 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-1">
 
-                    <main class="wrapper">
                         <section class="section-table">
                             <h1>Resume</h1>
 
@@ -115,7 +114,7 @@
                                                 <tr>
                                                     <td><p th:text="${p.fieldofstudy}" /></td>
                                                     <td><p th:text="${p.institute}" /></td>
-                                                    <td><p th:text="${p.year}" /></td>
+                                                    <td><p th:text="${{p.year}}" /></td>
                                                 </tr>
                                             </th:block>
                                             </tbody>
@@ -137,8 +136,8 @@
                                                     <tr>
                                                         <td><p th:text="${p.position}" /></td>
                                                         <td><p th:text="${p.organization}" /></td>
-                                                        <td><p th:text="${p.startdate}" /></td>
-                                                        <td><p th:text="${p.enddate}" /></td>
+                                                        <td><p th:text="${{p.startdate}}" /></td>
+                                                        <td><p th:text="${{p.enddate}}" /></td>
                                                         <td><p th:text="${p.duty}" /></td>
                                                     </tr>
                                                 </th:block>
@@ -164,10 +163,8 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
                                 </div>
                         </section>
-                    </main>
                     </a>
                 </div>
             </div>

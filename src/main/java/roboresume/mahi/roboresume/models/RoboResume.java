@@ -1,6 +1,7 @@
 package roboresume.mahi.roboresume.models;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,14 +19,14 @@ public class RoboResume {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
-    @Size(min=2,max=20)
+    @NotEmpty
+    @Size(max=20)
     private String firstname;
-    @NotNull
-    @Size(min=2,max=20)
+    @NotEmpty
+    @Size(max=20)
     private String lastname;
 
-    @NotNull
+    @NotEmpty
     @Email
     private String email;
 
