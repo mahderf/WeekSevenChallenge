@@ -157,6 +157,10 @@ public class MainController {
         ArrayList<Skills>skilllist=((ArrayList<Skills>)skillsRepository.findAll());
         rbdata.setNewskills(skilllist);
         model.addAttribute("robo",rbdata);
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return"resumetable";
     }
     @GetMapping("/updateperson/{id}")
@@ -183,16 +187,25 @@ public class MainController {
     @GetMapping("/deleteeducation/{id}")
     public String deleteEducation(@PathVariable("id") long id){
         educationRepository.delete(id);
-        return "redirect:/viewresume";
+        return "redirect:/test";
     }
     @GetMapping("/deletework/{id}")
     public String deleteWork(@PathVariable("id") long id){
         workRepository.delete(id);
-        return "redirect:/viewresume";
+        return "redirect:/test";
     }
     @GetMapping("/deleteskill/{id}")
     public String deleteSkill(@PathVariable("id") long id){
         skillsRepository.delete(id);
-        return "redirect:/viewresume";
+        return "redirect:/test";
+    }
+
+    @GetMapping("/login")
+    public String logon() {
+        return "login";
+    }
+    @GetMapping("/welcome")
+    public String WelcomeAfterLogin() {
+        return "welcome2";
     }
 }
