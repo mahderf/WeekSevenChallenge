@@ -43,6 +43,10 @@ public class MainController {
     {
         String message="Welcome to Robo Resume";
         model.addAttribute("message", message);
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "welcome";
     }
 
@@ -51,6 +55,10 @@ public class MainController {
     public String PersonalInfo(Model model)
     {
         model.addAttribute("robopersonal", new RoboResume());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return"addpersonalinfo";
     }
 
@@ -64,6 +72,9 @@ public class MainController {
         }
         resumeRepository.save(otherpersonal);
         model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "personalresult";
     }
 
@@ -72,6 +83,10 @@ public class MainController {
     public String EducationInfo(Model model)
     {
         model.addAttribute("roboeducation", new Education());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return"addeducation";
     }
 
@@ -85,6 +100,9 @@ public class MainController {
         }
         educationRepository.save(othereducation);
         model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "educationresult";
     }
     @GetMapping("/addworkexperience")
@@ -92,6 +110,10 @@ public class MainController {
     public String WorkInfo(Model model)
     {
        model.addAttribute("robowork", new WorkExperience());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
        return "addworkexperience";
     }
     @PostMapping("/addworkexperience")
@@ -105,6 +127,9 @@ public class MainController {
         workRepository.save(otherwork);
         System.out.println(otherwork.getEnddate());
         model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "workresult";
     }
 
@@ -113,6 +138,10 @@ public class MainController {
     public String SkillInfo(Model model)
     {
         model.addAttribute("roboskills", new Skills());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "addskills";
     }
     @PostMapping("/addskills")
@@ -124,6 +153,9 @@ public class MainController {
         }
         skillsRepository.save(otherskills);
         model.addAttribute("numberOfSkill",skillsRepository.count());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
         return "skillsresult";
     }
 
@@ -142,9 +174,11 @@ public class MainController {
 
         ArrayList<Skills>skilllist=((ArrayList<Skills>)skillsRepository.findAll());
         rbdata.setNewskills(skilllist);
-
-
         model.addAttribute("robo", rbdata );
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
                 return "viewresume";
     }
 
@@ -171,42 +205,75 @@ public class MainController {
     @GetMapping("/updateperson/{id}")
     public String editPerson(@PathVariable("id") long id, Model model){
         model.addAttribute("robopersonal", resumeRepository.findOne(id));
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "addpersonalinfo";
     }
     @GetMapping("/updateeducation/{id}")
     public String updateEducation(@PathVariable("id") long id, Model model){
         model.addAttribute("roboeducation", educationRepository.findOne(id));
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "addeducation";
     }
     @GetMapping("/updateexperience/{id}")
     public String updateExperience(@PathVariable("id") long id, Model model){
         model.addAttribute("robowork", workRepository.findOne(id));
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "addworkexperience";
     }
     @GetMapping("/updateskill/{id}")
     public String updateSkill(@PathVariable("id") long id, Model model){
         model.addAttribute("roboskills", skillsRepository.findOne(id));
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "addskills";
     }
 
     @GetMapping("/deleteeducation/{id}")
-    public String deleteEducation(@PathVariable("id") long id){
+    public String deleteEducation(@PathVariable("id") long id, Model model){
         educationRepository.delete(id);
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "redirect:/test";
     }
     @GetMapping("/deletework/{id}")
-    public String deleteWork(@PathVariable("id") long id){
+    public String deleteWork(@PathVariable("id") long id, Model model){
         workRepository.delete(id);
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "redirect:/test";
     }
     @GetMapping("/deleteskill/{id}")
-    public String deleteSkill(@PathVariable("id") long id){
+    public String deleteSkill(@PathVariable("id") long id, Model model){
         skillsRepository.delete(id);
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "redirect:/test";
     }
 
     @GetMapping("/login")
-    public String logon() {
+    public String logon(Model model) {
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
+
         return "login";
     }
 
@@ -219,7 +286,11 @@ public class MainController {
         return "redirect:/login";
     }
     @GetMapping("/welcome")
-    public String WelcomeAfterLogin() {
+    public String WelcomeAfterLogin(Model model) {
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "welcome2";
     }
 }
