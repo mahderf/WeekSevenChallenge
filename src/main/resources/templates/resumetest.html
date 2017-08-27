@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: headpart">
+
+</head>
+
+<body>
+<!-- Navigation -->
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+    <i class="fa fa-bars"></i>
+</a>
+<nav th:replace="base :: navpart">
+</nav>
+
+<!-- Header -->
+<header class="header" id="top">
+    <div class="text-vertical-center">
+
+        <main class="wrapper">
+            <section class="section-form">
+                <h1>Resume</h1>
+
+                <div class="container">
+                    <hr />
+                    <div>
+                        <div class="panel panel-default">
+
+                            <div class="panel-body">
+
+                                <p th:text="${robo.firstname} +' '+${robo.lastname}" />
+
+                                <p th:text="${robo.email}" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default active">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        <i class="fa fa-caret-right"></i> Education
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+
+                                    <div th:each="p:${robo.educations}">
+                                        <p th:text="${p.fieldofstudy}" />
+                                        <p th:text=" ${p.institute} +', '+ ${{p.year}}"/>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        <i class="fa fa-caret-right"></i> Experience
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <div th:each="p:${robo.experiences}">
+                                        <p  th:text="${p.position}" />
+                                        <p  th:text=" ${p.organization} +', '+ ${{p.startdate}}+'-'+ ${{p.enddate}}"/>
+                                        <p  th:text="'-'+ ${p.duty}" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        <i class="fa fa-caret-right"></i> Skills
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div th:each="p:${robo.newskills}">
+
+                                        <p  th:text=" ${p.skillname} +', '+ ${p.rating}" />
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</header>
+
+
+
+<!-- Footer -->
+<footer th:replace="base :: footpart">
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/stylish-portfolio.js"></script>
+
+</body>
+
+</html>

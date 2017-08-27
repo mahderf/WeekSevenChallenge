@@ -40,16 +40,20 @@
             <a class="js-scroll-trigger" href="/">Robo Home</a>
         </li>
         <li>
-            <a class="js-scroll-trigger" href="/addpersonalinfo">Add Person</a>
+            <a href="/addpersonalinfo" th:if="${numberOfPerson<1}"
+               class="active"class="js-scroll-trigger" >Add Person</a>
         </li>
         <li>
-            <a class="js-scroll-trigger" href="/addeducation">Add Education</a>
+            <a href="/addeducation" th:if="${numberOfEdu<10}"
+               class="active" class="js-scroll-trigger" >Add Education</a>
         </li>
         <li>
-            <a class="js-scroll-trigger" href="/addworkexperience">Add Experience</a>
+            <a href="/addworkexperience" th:if="${numberOfExpr<10}"
+               class="active" class="js-scroll-trigger" >Add Experience</a>
         </li>
         <li>
-            <a class="js-scroll-trigger" href="/addskills">Add a Skill</a>
+            <a href="/addskills" th:if="${numberOfSkill<20}"
+               class="active"class="js-scroll-trigger" >Add a Skill</a>
         </li>
         <li>
             <a class="js-scroll-trigger" href="/test">Information Entered</a>
@@ -68,6 +72,7 @@
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
+        <h2>Robo Login</h2>
 <form th:action="@{/login}" method="post">
 
     <label for=""></label>

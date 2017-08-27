@@ -94,7 +94,7 @@
                 </div>
             </div><br/>
             <div class="form-footer">
-                <button type="submit" class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
+                <button type="submit" th:if="${numberOfPerson<1}" class="active" class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
             </div>
         </form>
     </div>

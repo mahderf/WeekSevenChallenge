@@ -37,3 +37,10 @@ input[type="text"]{
     font-size: 20px;
 }
 
+main {
+    background: #EEE;
+    width: 900px;
+    margin: 20px auto;
+    padding: 10px 0;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+}

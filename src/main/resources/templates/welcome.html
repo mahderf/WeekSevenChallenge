@@ -9,7 +9,37 @@
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
     <i class="fa fa-bars"></i>
 </a>
-<nav th:replace="base :: navpart">
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle">
+            <i class="fa fa-times"></i>
+        </a>
+        <li class="sidebar-brand">
+            <a class="js-scroll-trigger" href="/">Robo Home</a>
+        </li>
+        <li>
+            <a href="/addpersonalinfo" th:if="${numberOfPerson<1}"
+               class="active"class="js-scroll-trigger" >Add Person</a>
+        </li>
+        <li>
+            <a href="/addeducation" th:if="${numberOfEdu<10}"
+               class="active" class="js-scroll-trigger" >Add Education</a>
+        </li>
+        <li>
+            <a href="/addworkexperience" th:if="${numberOfExpr<10}"
+               class="active" class="js-scroll-trigger" >Add Experience</a>
+        </li>
+        <li>
+            <a href="/addskills" th:if="${numberOfSkill<20}"
+               class="active"class="js-scroll-trigger" >Add a Skill</a>
+        </li>
+        <li>
+            <a class="js-scroll-trigger" href="/test">Information Entered</a>
+        </li>
+        <li>
+            <a class="js-scroll-trigger" href="/viewresume">View Resume</a>
+        </li>
+    </ul>
 </nav>
 
 <!-- Header -->
