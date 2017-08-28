@@ -39,8 +39,8 @@
                     </div>
 
                     <div th:if="${#fields.hasErrors('fieldofstudy')}"
-                         th:errors="*{fieldofstudy}"><small class="form-error"
-                                                            data-errors-when="valueMissing" >Error
+                         th:errors="*{fieldofstudy}" class="warning"><small class="form-error"
+                                                            data-errors-when="valueMissing" >
                     </small>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     </div>
 
                     <div th:if="${#fields.hasErrors('institute')}"
-                         th:errors="*{institute}"><small >Error
+                         th:errors="*{institute}" ><small >
                     </small>
                     </div>
                 </div>

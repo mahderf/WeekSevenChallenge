@@ -66,13 +66,8 @@
 <div class="header" id="top">
     <div class="text-vertical-center">
 <div id="bg"></div>
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
         <h2>Robo Login</h2>
+
 <form th:action="@{/login}" method="post">
 
     <label for=""></label>
@@ -80,6 +75,12 @@
 
     <label for=""></label>
     <input type="password" name="password" id="" placeholder="password" class="pass"/>
+    <div class="warning" th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
     <button type="submit">login to your account</button>
 </form>
 </div>
