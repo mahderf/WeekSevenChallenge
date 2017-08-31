@@ -2,10 +2,7 @@ package roboresume.mahi.roboresume.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -21,6 +18,10 @@ public class WorkExperience {
     @DateTimeFormat(pattern ="MMM,yyyy")
     private Date enddate;
     private String duty;
+
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    private RoboResume roboResumeExp;
 
     public String getOrganization() {
         return organization;
@@ -68,6 +69,14 @@ public class WorkExperience {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public RoboResume getRoboResumeExp() {
+        return roboResumeExp;
+    }
+
+    public void setRoboResumeExp(RoboResume roboResumeExp) {
+        this.roboResumeExp = roboResumeExp;
     }
 }
 

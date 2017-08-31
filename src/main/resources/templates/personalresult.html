@@ -26,7 +26,7 @@
 
 
                 <div class="form-footer">
-                    <a   href="/addeducation" class="btn btn-dark btn-lg js-scroll-trigger" >Next</a>
+                    <a   th:href="@{addeducation/{id}(id=${robopersonal.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Next</a>
                 </div><br/>
                 <div class="form-footer">
                     <a th:href="@{/updateperson/{id}(id=${robopersonal.id})}"

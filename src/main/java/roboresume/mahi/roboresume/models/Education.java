@@ -3,10 +3,7 @@ package roboresume.mahi.roboresume.models;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -28,6 +25,9 @@ public class Education {
     @NotEmpty
     @Size(max=40)
     private String institute;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    private RoboResume roboResumeEdu;
 
     public String getFieldofstudy() {
         return fieldofstudy;
@@ -59,6 +59,14 @@ public class Education {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public RoboResume getRoboResumeEdu() {
+        return roboResumeEdu;
+    }
+
+    public void setRoboResumeEdu(RoboResume roboResumeEdu) {
+        this.roboResumeEdu = roboResumeEdu;
     }
 }
 

@@ -1,9 +1,6 @@
 package roboresume.mahi.roboresume.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,6 +13,9 @@ public class Skills {
     private String skillname;
     @NotNull
     private String rating;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    private RoboResume roboResumeSkill;
 
     public long getId() {
         return id;
@@ -39,5 +39,13 @@ public class Skills {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public RoboResume getRoboResumeSkill() {
+        return roboResumeSkill;
+    }
+
+    public void setRoboResumeSkill(RoboResume roboResumeSkill) {
+        this.roboResumeSkill = roboResumeSkill;
     }
 }

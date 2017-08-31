@@ -3,13 +3,12 @@ package roboresume.mahi.roboresume.models;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class RoboResume {
@@ -30,33 +29,18 @@ public class RoboResume {
     @Email
     private String email;
 
-    private ArrayList<Education>educations=new ArrayList<Education>();
-    private ArrayList<WorkExperience>experiences=new ArrayList<WorkExperience>();
-    private ArrayList<Skills>newskills=new ArrayList<Skills>();
+    @OneToMany(mappedBy = "roboResumeEdu")
+    private Set<Education> educations;
+    @OneToMany(mappedBy = "roboResumeExp")
+    private Set<WorkExperience> experiences;
+    @OneToMany(mappedBy = "roboResumeSkill")
+    private Set<Skills>skills;
 
-
-    public ArrayList<Education> getEducations() {
-        return educations;
-    }
-
-    public void setEducations(ArrayList<Education> educations) {
-        this.educations = educations;
-    }
-
-    public ArrayList<WorkExperience> getExperiences() {
-        return experiences;
-    }
-
-    public void setExperiences(ArrayList<WorkExperience> experiences) {
-        this.experiences = experiences;
-    }
-
-    public ArrayList<Skills> getNewskills() {
-        return newskills;
-    }
-
-    public void setNewskills(ArrayList<Skills> newskills) {
-        this.newskills = newskills;
+    public RoboResume()
+    {
+        setEducations(new HashSet<Education>());
+        setExperiences(new HashSet<WorkExperience>());
+        setSkills(new HashSet<Skills>());
     }
 
     public long getId() {
@@ -90,4 +74,51 @@ public class RoboResume {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+    public Set<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(Set<Education> educations) {
+        this.educations = educations;
+    }
+
+    public Set<WorkExperience> getExperiences() {
+        return experiences;
+    }
+
+    public void setExperiences(Set<WorkExperience> experiences) {
+        this.experiences = experiences;
+    }
+
+    public Set<Skills> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skills> skills) {
+        this.skills = skills;
+    }
+
+
+
+
+    public void addEducation(Education edu)
+    {
+        edu.setRoboResumeEdu(this);
+        this.educations.add(edu);
+    }
+
+    public void addExperience(WorkExperience exp)
+    {
+        exp.setRoboResumeExp(this);
+        this.experiences.add(exp);
+    }
+
+    public void addSkills(Skills skil)
+    {
+        skil.setRoboResumeSkill(this);
+        this.skills.add(skil);
+    }
+
 }
+
