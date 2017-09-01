@@ -25,13 +25,14 @@
             <h3><p  align="center" th:text="'Duties: '+ ${robowork.duty}" /></h3>
 
             <div class="form-footer">
-                <a href="/addworkexperience"
-                   th:if="${numberOfExpr<10}" class="active" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Experience</a>
+                <a th:href="@{addworkexperience/{id}(id=${robowork.roboResumeExp.id})}" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Experience</a>
+
+
             </div><br/>
 
             <div class="form-footer">
 
-                <a href="/addskills" class="btn btn-dark btn-lg js-scroll-trigger">Next</a>
+                <a th:href="@{addskills/{id}(id=${robowork.roboResumeExp.id})}" class="btn btn-dark btn-lg js-scroll-trigger">Next</a>
             </div><br/>
             <div class="form-footer">
             <a th:href="@{/updateexperience/{id}(id=${robowork.id})}" th:if="${numberOfExpr>0}"

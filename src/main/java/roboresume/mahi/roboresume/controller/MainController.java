@@ -76,13 +76,13 @@ public class MainController {
     }
 
     @GetMapping("/addeducation/{id}")
-
     public String EducationInfo(@PathVariable("id") long id,Model model)
     {
         Education othereducation= new Education();
         othereducation.setRoboResumeEdu(resumeRepository.findOne(id));
+//        WorkExperience otherexperience=new WorkExperience();
+//        otherexperience.setRoboResumeExp(resumeRepository.findOne(id));
         model.addAttribute("roboeducation", othereducation);
-
 
         model.addAttribute("numberOfPerson", resumeRepository.count());
         model.addAttribute("numberOfEdu",educationRepository.count());
@@ -91,17 +91,14 @@ public class MainController {
 
         return"addeducation";
     }
-
     @PostMapping("/addeducation")
     public String PostEducation(@Valid @ModelAttribute("roboeducation") Education othereducation, BindingResult
             bindingResult, Model model)
     {
-
         if(bindingResult.hasErrors())
         {
             return "addeducation";
         }
-
         educationRepository.save(othereducation);
         model.addAttribute("numberOfEdu",educationRepository.count());
         model.addAttribute("numberOfPerson", resumeRepository.count());
@@ -109,11 +106,14 @@ public class MainController {
         model.addAttribute("numberOfSkill",skillsRepository.count());
         return "educationresult";
     }
-    @GetMapping("/addworkexperience")
 
-    public String WorkInfo(Model model)
+    @GetMapping("/addworkexperience/{id}")
+    public String WorkInfo(@PathVariable("id") long id, Model model)
     {
-       model.addAttribute("robowork", new WorkExperience());
+
+        WorkExperience otherexperience=new WorkExperience();
+        otherexperience.setRoboResumeExp(resumeRepository.findOne(id));
+        model.addAttribute("robowork", otherexperience);
         model.addAttribute("numberOfPerson", resumeRepository.count());
         model.addAttribute("numberOfEdu",educationRepository.count());
         model.addAttribute("numberOfExpr",workRepository.count());
@@ -137,11 +137,12 @@ public class MainController {
         return "workresult";
     }
 
-    @GetMapping("/addskills")
-
-    public String SkillInfo(Model model)
+    @GetMapping("/addskills/{id}")
+    public String SkillInfo(@PathVariable("id") long id, Model model)
     {
-        model.addAttribute("roboskills", new Skills());
+        Skills otherskill= new Skills();
+        otherskill.setRoboResumeSkill(resumeRepository.findOne(id));
+        model.addAttribute("roboskills", otherskill);
         model.addAttribute("numberOfPerson", resumeRepository.count());
         model.addAttribute("numberOfEdu",educationRepository.count());
         model.addAttribute("numberOfExpr",workRepository.count());
@@ -200,12 +201,19 @@ public class MainController {
 //        ArrayList<Skills>skilllist=((ArrayList<Skills>)skillsRepository.findAll());
 //        rbdata.setNewskills(skilllist);
 //        model.addAttribute("robo",rbdata);
-//        model.addAttribute("numberOfPerson", resumeRepository.count());
-//        model.addAttribute("numberOfEdu",educationRepository.count());
-//        model.addAttribute("numberOfExpr",workRepository.count());
-//        model.addAttribute("numberOfSkill",skillsRepository.count());
+        model.addAttribute("numberOfPerson", resumeRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository.count());
+        model.addAttribute("numberOfExpr",workRepository.count());
+        model.addAttribute("numberOfSkill",skillsRepository.count());
         return"resumetable";
     }
+    @GetMapping("/listperson")
+    public String showTable( RoboResume persons, Model model) {
+
+        model.addAttribute("robo",resumeRepository.findAll());
+        return "listperson";
+    }
+
     @GetMapping("/updateperson/{id}")
     public String editPerson(@PathVariable("id") long id, Model model){
         model.addAttribute("robopersonal", resumeRepository.findOne(id));

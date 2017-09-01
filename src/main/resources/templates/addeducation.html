@@ -21,6 +21,7 @@
 
             <form action="#" th:action="@{/addeducation}" th:object="${roboeducation}" method="post">
                 <input type="text" th:field="*{roboResumeEdu.id}">
+                <input type="text" th:field="*{id}">
                 <div class="form-group">
                     <label class="form-label form-label--required">
                         Field of Study:
@@ -93,9 +94,8 @@
                     </div>
                 </div>
 
-
                 <div class="form-footer">
-                    <button type="submit"  th:if="${numberOfEdu<10}" class="active" class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
+                    <button type="submit"  class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
                 </div>
             </form>
         </section>

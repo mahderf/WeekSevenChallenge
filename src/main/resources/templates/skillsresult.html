@@ -22,7 +22,7 @@
             <h3><p  align="center" th:text="'Rating: '+ ${roboskills.rating}" /></h3>
 
             <div class="form-footer">
-                <a href="/addskills"  th:if="${numberOfSkill<20}"  class="active" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Skill</a>
+                <a th:href="@{addskills/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Skill</a>
             </div><br/>
             <div class="form-footer">
                 <a href="/viewresume" class="btn btn-dark btn-lg js-scroll-trigger" >View Resume</a>

@@ -17,6 +17,8 @@
 <header class="header" id="top">
     <div class="text-vertical-center">
         <form action="#" th:action="@{/addskills}" th:object="${roboskills}" method="post">
+            <input type="text" th:field="*{roboResumeSkill.id}">
+            <input type="text" th:field="*{id}">
             <div class="form-group">
                 <label class="form-label form-label--required">
                     Skill:
@@ -65,7 +67,7 @@
             </div>
 
             <div class="form-footer">
-                <button type="submit"  th:if="${numberOfPerson<20}" class="active" class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
+                <button type="submit"  class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
             </div>
         </form>
     </div>

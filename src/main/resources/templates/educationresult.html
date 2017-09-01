@@ -23,13 +23,12 @@
             <h3><p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" /></h3>
 
             <div class="form-footer">
-                <a href="/addeducation"  th:if="${numberOfEdu<10}"
-                   class="active" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Eduation</button> </a>
+                <a th:href="@{addeducation/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Eduation</button> </a>
             </div><br/>
 
             <div class="form-footer">
 
-                <a href="/addworkexperience" class="btn btn-dark btn-lg js-scroll-trigger" >Next</button></a>
+                <a th:href="@{addworkexperience/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Next</button></a>
             </div><br/>
 
             <div class="form-footer">

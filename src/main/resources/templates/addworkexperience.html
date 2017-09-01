@@ -20,6 +20,8 @@
             <h3>Please start from your Recent Experience</h3>
 
             <form action="#" th:action="@{/addworkexperience}" th:object="${robowork}" method="post">
+                <input type="text" th:field="*{roboResumeExp.id}">
+                <input type="text" th:field="*{id}">
                 <div class="form-group">
                     <label class="form-label form-label--required">
                         Organization:
@@ -140,7 +142,7 @@
 
 
                 <div class="form-footer">
-                    <button type="submit" th:if="${numberOfExpr<10}" class="active"class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
+                    <button type="submit" class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
                 </div>
             </form>
         </section>
