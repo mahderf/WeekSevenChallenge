@@ -17,6 +17,7 @@
 <header class="header" id="top">
     <div class="text-vertical-center">
         <form action="#" th:action="@{/addpersonalinfo}" th:object="${robopersonal}" method="post">
+            <input type="text" th:field="*{id}">
             <div class="form-group">
                 <label class="form-label form-label--required">
                     First Name:
