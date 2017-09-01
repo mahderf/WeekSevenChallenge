@@ -58,14 +58,12 @@
                                     <a th:href="@{/updateperson/{id}(id=${item.id})}" th:if="${numberOfPerson=1}"
                                        class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>-
 
-                                    <a th:href="@{/addeducation/{id}(id=${item.id})}" th:if="${numberOfPerson=1}"
-                                       class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Add Education</a>-
+                                    <a th:href="@{/addeducation/{id}(id=${item.id})}"  class="btn btn-dark btn-lg js-scroll-trigger" >Add Education</a>-
 
-                                    <a th:href="@{/addworkexperience/{id}(id=${item.id})}" th:if="${numberOfPerson=1}"
-                                       class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Add Experience</a>-
+                                    <a th:href="@{/addworkexperience/{id}(id=${item.id})}"  class="btn btn-dark btn-lg js-scroll-trigger" >Add Experience</a>-
 
-                                    <a th:href="@{/addskills/{id}(id=${item.id})}" th:if="${numberOfPerson=1}"
-                                       class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Add Skills</a>
+                                    <a th:href="@{/addskills/{id}(id=${item.id})}"  class="btn btn-dark btn-lg js-scroll-trigger" >Add Skills</a>
+                                    <a th:href="@{/viewresume/{id}(id=${item.id})}"  class="btn btn-dark btn-lg js-scroll-trigger" >View Resume</a>
                                 </td>
                             </tr>
                         </th:block>

@@ -25,7 +25,7 @@
                 <a th:href="@{addskills/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Skill</a>
             </div><br/>
             <div class="form-footer">
-                <a href="/viewresume" class="btn btn-dark btn-lg js-scroll-trigger" >View Resume</a>
+                <a th:href="@{/viewresume/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >View Resume</a>
             </div><br/>
             <div class="form-footer">
             <a th:href="@{/updateskill/{id}(id=${roboskills.id})}"th:if="${numberOfSkill>0}" class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a> -

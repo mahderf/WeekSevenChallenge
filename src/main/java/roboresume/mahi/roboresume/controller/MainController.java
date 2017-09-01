@@ -164,10 +164,13 @@ public class MainController {
         return "skillsresult";
     }
 
-    @GetMapping("/viewresume")
+    @GetMapping("/viewresume/{id}")
 
-    public String PostResume(Model model)
+    public String PostResume(@PathVariable("id") long id,Model model)
     {
+
+        model.addAttribute("robo",resumeRepository.findRoboResumeById(id));
+
 //        RoboResume rbdata=resumeRepository.findOne(new Long(1));
 //
 //        ArrayList<Education>educationlist=((ArrayList<Education>) educationRepository.findAll());
