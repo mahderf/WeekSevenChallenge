@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link href="css/newfile.css" rel="stylesheet">
+    <link href="../css/tablecss.css" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Navigation -->
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+    <i class="fa fa-bars"></i>
+</a>
+<nav th:replace="base :: navpart">
+</nav>
+<!-- Header -->
+<header class="header" id="top">
+    <div class="text-vertical-center">
+        <section class="section-table">
+            <h1>Information Entered</h1>
+
+            <div class="panel panel-default">
+                <div>
+                    <table>
+                        <athead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </athead>
+                        <tbody>
+                        <th:block th:each="item:${robo}">
+                            <tr>
+                                <td><p th:text="${item.firstname} +' '+${item.lastname}" /></td>
+                                <td><p th:text="${item.email}" /></td>
+                                <td>
+                                    <a th:href="@{/updateperson/{id}(id=${item.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>
+                                </td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div>
+                    <table>
+                        <athead>
+                            <tr>
+                                <th>Field of Institute</th>
+                                <th>Institute Year</th>
+                                <th>Graduating Year</th>
+                                <th>Actions</th>
+                            </tr>
+                        </athead>
+                        <tbody>
+                        <th:block th:each="item:${robo}">
+                        <th:block th:each="p:${item.educations}">
+                            <tr>
+                                <td><p th:text="${p.fieldofstudy}" /></td>
+                                <td><p th:text="${p.institute}" /></td>
+                                <td><p th:text="${{p.year}}" /></td>
+                                <td>
+                                    <a th:href="@{/updateeducation/{id}(id=${p.id})}"class="btn btn-dark btn-lg js-scroll-trigger"  >Edit</a>-
+                                    <!--<a th:href="@{/deleteeducation/{id}(id=${p.id})}" th:if="${numberOfEdu>1}"-->
+                                       <!--class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Delete</a>-->
+                                </td>
+                            </tr>
+                        </th:block>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <athead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Organization</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Duty</th>
+                                <th>Actions</th>
+                            </tr>
+                        </athead>
+                        <tbody>
+                        <th:block th:each="item:${robo}">
+                        <th:block th:each="p:${item.experiences}">
+                            <tr>
+                                <td><p th:text="${p.position}" /></td>
+                                <td><p th:text="${p.organization}" /></td>
+                                <td><p th:text="${{p.startdate}}" /></td>
+                                <td><p th:text="${{p.enddate}}" /></td>
+                                <td><p th:text="${p.duty}" /></td>
+                                <td>
+                                    <a th:href="@{/updateexperience/{id}(id=${p.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>-
+                                    <!--<a th:href="@{/deletework/{id}(id=${p.id})}" th:if="${numberOfExpr>1}"-->
+                                       <!--class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Delete</a>-->
+                                </td>
+                            </tr>
+                        </th:block>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <athead>
+                            <tr>
+                                <th>Skill</th>
+                                <th>Rating</th>
+                                <th>Actions</th>
+
+                            </tr>
+                        </athead>
+                        <tbody>
+                        <th:block th:each="item:${robo}">
+                        <th:block th:each="p:${item.skills}">
+                            <tr>
+                                <td><p th:text="${p.skillname}" /></td>
+                                <td><p th:text="${p.rating}" /></td>
+                                <td>
+                                    <a th:href="@{/updateskill/{id}(id=${p.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a> -
+                                    <!--<a th:href="@{/deleteskill/{id}(id=${p.id})}" th:if="${numberOfSkill>1}"-->
+                                       <!--class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Delete</a>-->
+                                </td>
+                            </tr>
+                        </th:block>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</header>
+
+
+
+<!-- Footer -->
+<footer th:replace="base :: footpart">
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/stylish-portfolio.js"></script>
+
+</body>
+
+</html>

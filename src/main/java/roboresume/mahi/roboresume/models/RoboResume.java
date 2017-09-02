@@ -35,12 +35,16 @@ public class RoboResume {
     private Set<WorkExperience> experiences;
     @OneToMany(mappedBy = "roboResumeSkill")
     private Set<Skills>skills;
+    @ManyToMany(mappedBy ="people")
+    private  Set<Courses>courses;
+
 
     public RoboResume()
     {
         setEducations(new HashSet<Education>());
         setExperiences(new HashSet<WorkExperience>());
         setSkills(new HashSet<Skills>());
+        courses=new HashSet<Courses>();
     }
 
     public long getId() {
@@ -99,8 +103,13 @@ public class RoboResume {
         this.skills = skills;
     }
 
+    public Set<Courses> getCourses() {
+        return courses;
+    }
 
-
+    public void setCourses(Set<Courses> courses) {
+        this.courses = courses;
+    }
 
     public void addEducation(Education edu)
     {
@@ -118,6 +127,11 @@ public class RoboResume {
     {
         skil.setRoboResumeSkill(this);
         this.skills.add(skil);
+    }
+
+    public void addCourses(Courses crs)
+    {
+        courses.add(crs);
     }
 
 }
