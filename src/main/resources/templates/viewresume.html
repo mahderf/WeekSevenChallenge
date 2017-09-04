@@ -1,21 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head th:replace="base :: headpart">
+<head xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Robo Resume</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/creative.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/formcss.css">
 
 </head>
 
-<body>
+<body id="page-top">
+
 <!-- Navigation -->
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-    <i class="fa fa-bars"></i>
-</a>
-<nav th:replace="base :: navpart">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/welcome">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/addpersonalinfo">Add Person</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
+                </li>
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<!-- Header -->
-<header class="header" id="top">
-    <div class="text-vertical-center">
+<header class="masthead">
+    <div class="header-content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
 
         <main class="wrapper">
             <section class="section-form">
@@ -36,7 +85,7 @@
                     </div>
 
                     <div class="panel-group" id="accordion">
-                        <!--<div class="panel panel-default active">-->
+                        <div class="panel panel-default active">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
@@ -44,7 +93,7 @@
                                     </a>
                                 </h4>
                             </div>
-                            <!--<div id="collapseOne" class="panel-collapse collapse in">-->
+                            <div id="collapseOne" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <div th:each="p:${robo}">
                                     <div th:each="item:${p.educations}">
@@ -55,10 +104,10 @@
                                     </div>
                                 </div>
                             </div>
-                        <!--</div>-->
+                        </div>
 
 
-                        <!--<div class="panel panel-default">-->
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
@@ -66,7 +115,7 @@
                                     </a>
                                 </h4>
                             </div>
-                            <!--<div id="collapseTwo" class="panel-collapse collapse">-->
+                            <div id="collapseTwo" class="panel-collapse collapse">
                                 <div class="panel-body">
 
                                     <div th:each="p:${robo}">
@@ -77,11 +126,9 @@
                                     </div>
                                     </div>
                                 </div>
-                            <!--</div>-->
-                        <!--</div>-->
-
-
-                        <!--<div class="panel panel-default">-->
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -89,41 +136,42 @@
                                     </a>
                                 </h4>
                             </div>
-                            <!--<div id="collapseThree" class="panel-collapse collapse">-->
+                            <div id="collapseThree" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div th:each="p:${robo}">
                                     <div th:each="item:${p.skills}">
 
                                         <p  th:text=" ${item.skillname} +', '+ ${item.rating}" />
 
-
                                     </div>
                                 </div>
-                            <!--</div>-->
+                            </div>
                         </div>
                     </div>
                 </div>
+                </div>
+                </div>
             </section>
         </main>
+                </div>
+            </div>
+        </div>
     </div>
+
 </header>
 
-
-
-<!-- Footer -->
-<footer th:replace="base :: footpart">
-</footer>
-
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/popper/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/popper/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 <!-- Custom scripts for this template -->
-<script src="js/stylish-portfolio.js"></script>
+<script src="../js/creative.min.js"></script>
 
 </body>
 

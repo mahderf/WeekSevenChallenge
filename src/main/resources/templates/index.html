@@ -57,41 +57,36 @@
 
 <header class="masthead">
   <div class="header-content">
-    <div class="container">
+  <div class="container">
 
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-          <section class="section-form">
-            <h1>Information Entered</h1>
-            <h3> <p  align="center" th:text="'Skill: '+ ${roboskills.skillname}" /></h3>
-            <h3><p  align="center" th:text="'Rating: '+ ${roboskills.rating}" /></h3>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
+        <div class="text-vertical-center">
+          <div id="bg"></div>
+          <h2>Robo Login</h2>
 
-            <div class="col-xs-6 col-md-8">
-              <a th:href="@{addskills/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-success btn-block btn-lg">Add Another Skill</a>
-            </div><br/>
-            <div class="col-xs-6 col-md-6">
-              <a th:href="@{/viewresume/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-success btn-block btn-lg">View Resume</a>
-            </div><br/>
-            <!--<div class="form-footer">-->
-            <!--<a th:href="@{/editinfo/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>-->
-          <!--</div><br/>-->
-            <!--<div class="form-footer">-->
-              <!--<a th:href="@{/updateskill/{id}(id=${roboskills.id})}"th:if="${numberOfSkill>0}" class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a> - -->
-              <!--<a th:href="@{/deleteskill/{id}(id=${roboskills.id})}" th:if="${numberOfSkill>1}"  class="active" class="btn btn-dark btn-lg js-scroll-trigger">Delete</a>-->
-            <!--</div>-->
-          </section>
+          <form th:action="@{/login}" method="post">
 
-          <hr class="colorgraph">
-          <div class="row">
-            <!--<div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>-->
-            <!--<div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>-->
-          </div>
+            <label for=""></label>
+            <input type="text" name="username"  placeholder="username" class="name"/>
 
+            <label for=""></label>
+            <input type="password" name="password" id="" placeholder="password" class="pass"/>
+            <div class="warning" th:if="${param.error}">
+              Invalid username and password.
+            </div>
+            <div th:if="${param.logout}">
+              You have been logged out.
+            </div>
+            <button type="submit">login to your account</button>
+          </form>
         </div>
       </div>
-
     </div>
-  </div>
+    </div>
+    </div>
+    </div>
+
 </header>
 
 <!-- Bootstrap core JavaScript -->

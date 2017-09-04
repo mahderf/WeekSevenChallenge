@@ -6,17 +6,22 @@ div{
 
 table{
     width:100%;
+    table-layout: fixed;
+    color: black;
 }
 
 th, td{
     padding:10px;
     border:1px solid #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 th{
     background:#c00;
     color:#fff;
-    font-weight:bold;
+    font-weight: normal;
     font-size:18px;
 }
 

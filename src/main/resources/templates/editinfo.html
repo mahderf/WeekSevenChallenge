@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <title>Robo Resume</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-    <!-- Custom CSS -->
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="css/newfile.css" rel="stylesheet">
-    <link href="../css/tablecss.css" rel="stylesheet">
+    <!-- Plugin CSS -->
+    <link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/creative.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/tablecss.css">
 
 </head>
 
-<body>
-<!-- Navigation -->
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-    <i class="fa fa-bars"></i>
-</a>
-<nav th:replace="base :: navpart">
-</nav>
-<!-- Header -->
-<header class="header" id="top">
-    <div class="text-vertical-center">
-        <section class="section-table">
-            <h1>Information Entered</h1>
+<body id="page-top">
 
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/welcome">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/addpersonalinfo">Add Person</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
+                </li>
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="masthead">
+    <div class="text-vertical-center">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
+                    <section class="section-table">
+            <h3>Information Entered</h3>
+                        <hr class="colorgraph">
             <div class="panel panel-default">
                 <div>
                     <table>
@@ -53,7 +80,7 @@
                                 <td><p th:text="${item.firstname} +' '+${item.lastname}" /></td>
                                 <td><p th:text="${item.email}" /></td>
                                 <td>
-                                    <a th:href="@{/updateperson/{id}(id=${item.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>
+                                    <a th:href="@{/updateperson/{id}(id=${item.id})}">Edit</a>
                                 </td>
                             </tr>
                         </th:block>
@@ -79,7 +106,7 @@
                                 <td><p th:text="${p.institute}" /></td>
                                 <td><p th:text="${{p.year}}" /></td>
                                 <td>
-                                    <a th:href="@{/updateeducation/{id}(id=${p.id})}"class="btn btn-dark btn-lg js-scroll-trigger"  >Edit</a>-
+                                    <a th:href="@{/updateeducation/{id}(id=${p.id})}">Edit</a>
                                     <!--<a th:href="@{/deleteeducation/{id}(id=${p.id})}" th:if="${numberOfEdu>1}"-->
                                        <!--class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Delete</a>-->
                                 </td>
@@ -111,7 +138,7 @@
                                 <td><p th:text="${{p.enddate}}" /></td>
                                 <td><p th:text="${p.duty}" /></td>
                                 <td>
-                                    <a th:href="@{/updateexperience/{id}(id=${p.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>-
+                                    <a th:href="@{/updateexperience/{id}(id=${p.id})}">Edit</a>
                                     <!--<a th:href="@{/deletework/{id}(id=${p.id})}" th:if="${numberOfExpr>1}"-->
                                        <!--class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Delete</a>-->
                                 </td>
@@ -139,7 +166,7 @@
                                 <td><p th:text="${p.skillname}" /></td>
                                 <td><p th:text="${p.rating}" /></td>
                                 <td>
-                                    <a th:href="@{/updateskill/{id}(id=${p.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a> -
+                                    <a th:href="@{/updateskill/{id}(id=${p.id})}">Edit</a>
                                     <!--<a th:href="@{/deleteskill/{id}(id=${p.id})}" th:if="${numberOfSkill>1}"-->
                                        <!--class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Delete</a>-->
                                 </td>
@@ -150,26 +177,27 @@
                     </table>
                 </div>
             </div>
+                        <hr class="colorgraph">
         </section>
     </div>
+    </div>
+    </div>
+    </div>
+
 </header>
 
-
-
-<!-- Footer -->
-<footer th:replace="base :: footpart">
-</footer>
-
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/popper/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/popper/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 <!-- Custom scripts for this template -->
-<script src="js/stylish-portfolio.js"></script>
+<script src="../js/creative.min.js"></script>
 
 </body>
 
