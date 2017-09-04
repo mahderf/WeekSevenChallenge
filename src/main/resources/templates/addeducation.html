@@ -1,126 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head th:replace="base :: headpart">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Robo Resume</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/creative.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/formcss.css">
 
 </head>
 
-<body>
+<body id="page-top">
+
 <!-- Navigation -->
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-    <i class="fa fa-bars"></i>
-</a>
-<nav th:replace="base :: navpart">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/welcome">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/addpersonalinfo">Add Person</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
+                </li>
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<!-- Header -->
-<header class="header" id="top">
-    <div class="text-vertical-center">
-        <section class="section-form">
-            <h3>Please start from your Recent Education</h3>
+<header class="masthead">
+    <div class="header-content">
+        <div class="container">
 
-            <form action="#" th:action="@{/addeducation}" th:object="${roboeducation}" method="post">
-                <input type="text" th:field="*{roboResumeEdu.id}">
-                <input type="text" th:field="*{id}">
-                <div class="form-group">
-                    <label class="form-label form-label--required">
-                        Field of Study:
-                    </label>
-                    <div class="form-addon" data-states-for="name">
-                        <div class="form-addon__addon">
-                            <span class="icon-name"></span>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                    <form action="#" th:action="@{/addeducation}" th:object="${roboeducation}" method="post">
+                        <input type="text" th:field="*{roboResumeEdu.id}">
+                        <input type="text" th:field="*{id}">
+                        <h2>Enter Education<small> Starting from the Recent Education.</small></h2>
+                        <hr class="colorgraph">
+                        <div class="form-group">
+                            <input type="text" th:field="*{fieldofstudy}" name="field_of_study" id="field_of_study" class="form-control input-lg" placeholder="Field Of Study" tabindex="3">
                         </div>
-
-                        <input type="text"
-                               th:field="*{fieldofstudy}"
-                        />
-
-                        <span class="form-addon__icon icon-valid"></span>
-                        <span class="form-addon__icon icon-invalid"></span>
+                        <div class="form-group">
+                            <input type="text" th:field="*{institute}" name="email" id="institute" class="form-control input-lg" placeholder="Institute" tabindex="4">
+                        </div><div class="form-group">
+                        <input type="text" th:field="*{year}"name="year" id="email" class="form-control input-lg" placeholder="Year of Graduation(yyyy)" tabindex="5">
                     </div>
-
-                    <div th:if="${#fields.hasErrors('fieldofstudy')}"
-                         th:errors="*{fieldofstudy}" class="warning"><small class="form-error"
-                                                            data-errors-when="valueMissing" >
-                    </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label form-label--required">
-                        Intstitute:
-                    </label>
-
-                    <div class="form-addon" data-states-for="name">
-                        <div class="form-addon__addon">
-                            <span class="icon-name"></span>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                            <!--<div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>-->
                         </div>
-
-                        <input type="text"
-                               th:field="*{institute}"
-                        />
-                        <span class="form-addon__icon icon-valid"></span>
-                        <span class="form-addon__icon icon-invalid"></span>
-                    </div>
-
-                    <div th:if="${#fields.hasErrors('institute')}"
-                         th:errors="*{institute}" ><small >
-                    </small>
-                    </div>
+                    </form>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-label form-label--required">
-                        Year of Graduation<small>(yyyy)</small>:
-                    </label>
-
-                    <div class="form-addon" data-states-for="email">
-                        <div class="form-addon__addon">
-                            <span class="icon-email"></span>
-                        </div>
-
-                        <input type="text"
-                               th:field="*{year}"
-                        />
-
-                        <span class="form-addon__icon icon-valid"></span>
-                        <span class="form-addon__icon icon-invalid"></span>
-                    </div>
-
-                    <div th:if="${#fields.hasErrors('year')}"
-                         th:errors="*{year}"><small class="form-error"
-                                                    data-errors-when="valueMissing">Error.
-                    </small>
-
-                    </div>
-                </div>
-
-                <div class="form-footer">
-                    <button type="submit"  class="btn btn-dark btn-lg js-scroll-trigger">ENTER</button>
-                </div>
-            </form>
-        </section>
+            </div>
+        </div>
     </div>
 </header>
 
-
-<!-- Footer -->
-<footer th:replace="base :: footpart">
-</footer>
-
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/popper/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/popper/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 <!-- Custom scripts for this template -->
-<script src="js/stylish-portfolio.js"></script>
+<script src="../js/creative.min.js"></script>
 
 </body>
 
 </html>
-
-
-

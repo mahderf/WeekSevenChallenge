@@ -1,64 +1,113 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head th:replace="base :: headpart">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Robo Resume</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/creative.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/formcss.css">
 
 </head>
 
-<body>
+<body id="page-top">
+
 <!-- Navigation -->
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-    <i class="fa fa-bars"></i>
-</a>
-<nav th:replace="base :: navpart">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/welcome">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/addpersonalinfo">Add Person</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
+                </li>
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<!-- Header -->
-<header class="header" id="top">
-    <div class="text-vertical-center">
-        <section class="section-form">
-            <h1>Information Entered</h1>
-            <h3><p  align="center" th:text="'Field of Study: '+ ${roboeducation.fieldofstudy}" /></h3>
-            <h3><p  align="center" th:text="'Year Graduated: '+ ${{roboeducation.year}}" /></h3>
-            <h3><p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" /></h3>
+<header class="masthead">
+    <div class="header-content">
+        <div class="container">
 
-            <div class="form-footer">
-                <a th:href="@{addeducation/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-dark btn-lg js-scroll-trigger">Add Another Eduation</button> </a>
-            </div><br/>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" row="5">
+                    <hr class="colorgraph">
+                    <main class="wrapper">
+                    <section class="section-form">
+                        <h1>Information Entered</h1>
+                        <h3><p  align="center" th:text="'Field of Study: '+ ${roboeducation.fieldofstudy}" /></h3>
+                        <h3><p  align="center" th:text="'Year Graduated: '+ ${{roboeducation.year}}" /></h3>
+                        <h3><p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" /></h3>
 
-            <div class="form-footer">
+                        <div class="col-xs-6 col-md-8">
+                            <a th:href="@{addeducation/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-success btn-block btn-lg">Add another Education</a>
+                        </div><br/>
 
-                <a th:href="@{addworkexperience/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Next</button></a>
-            </div><br/>
+                        <div class="col-xs-6 col-md-6">
 
-            <div class="form-footer">
-                <a th:href="@{/updateeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>0}"
-                   class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>--
+                            <a th:href="@{addworkexperience/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-success btn-block btn-lg" >Next</button></a>
+                        </div><br/>
 
-                <a th:href="@{/deleteeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>1}"
-                   class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Delete</a>
-            </div><br/>
+                        <!--<div class="col-xs-6 col-md-6">-->
+                            <!--<a th:href="@{/updateeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>0}"-->
+                               <!--class="active" class="btn btn-success btn-block btn-lg" >Edit</a>&#45;&#45;-->
 
-        </section>
+                            <!--<a th:href="@{/deleteeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>1}"-->
+                               <!--class="active" class="btn btn-success btn-block btn-lg" >Delete</a>-->
+                        <!--</div><br/>-->
+
+                    </section>
+                    </main>
+                    <hr class="colorgraph">
+                </div>
+            </div>
+
+        </div>
     </div>
 </header>
 
-
-
-<!-- Footer -->
-<footer th:replace="base :: footpart">
-</footer>
-
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/popper/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/popper/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 <!-- Custom scripts for this template -->
-<script src="js/stylish-portfolio.js"></script>
+<script src="../js/creative.min.js"></script>
 
 </body>
 

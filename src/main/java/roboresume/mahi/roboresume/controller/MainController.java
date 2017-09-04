@@ -178,8 +178,8 @@ public class MainController {
     }
 
     @PostMapping("addpeopletocourse/{crsid}")
-    public String postPeopletoCourse(@RequestParam("people") String personId,
-                                     @PathVariable("crsid") long courseID,
+    public String postPeopletoCourse(@PathVariable("crsid") long courseID,
+                                     @RequestParam("people") String personId,
                                      @ModelAttribute("aPerson") RoboResume p,
                                      Model model)
     {
