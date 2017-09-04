@@ -69,17 +69,28 @@
                         <div class="form-group">
                             <input type="text" th:field="*{organization}" name="organization" id="organization" class="form-control input-lg" placeholder="Organization" tabindex="3">
                         </div>
+                        <div th:if="${#fields.hasErrors('organization')}"  th:errors="*{organization}"
+                             class="well alert alert-warning" role="alert"></div>
                         <div class="form-group">
                             <input type="text" th:field="*{position}" name="position" id="position" class="form-control input-lg" placeholder="Position" tabindex="4">
-                        </div><div class="form-group">
-                        <input type="text" th:field="*{startdate}"name="startdate" id="startdate" class="form-control input-lg" placeholder="Start Date(MMM,yyyy)" tabindex="5">
+                        </div>
+                        <div th:if="${#fields.hasErrors('position')}"  th:errors="*{position}"
+                             class="well alert alert-warning" role="alert"></div>
+                        <div class="form-group">
+                        <input type="text" th:field="*{startdate}"name="startdate" id="startdate" class="form-control input-lg" placeholder="Start Date (MMM,yyyy)" tabindex="5">
                     </div>
+                        <div th:if="${#fields.hasErrors('startdate')}"  th:errors="*{startdate}"
+                             class="well alert alert-warning" role="alert"></div>
                         <div class="form-group">
-                            <input type="text" th:field="*{enddate}"name="startdate" id="enddate" class="form-control input-lg" placeholder="End Date(MMM,yyyy)" tabindex="6">
+                            <input type="text" th:field="*{enddate}"name="startdate" id="enddate" class="form-control input-lg" placeholder="End Date (MMM,yyyy)" tabindex="6">
                         </div>
+                        <div th:if="${#fields.hasErrors('enddate')}"  th:errors="*{enddate}"
+                             class="well alert alert-warning" role="alert"></div>
                         <div class="form-group">
-                            <input type="text" th:field="*{duty}"name="duty" id="duty" class="form-control input-lg" placeholder="Dutys(write as many duty's separated by comma)" tabindex="6">
+                            <input type="text" th:field="*{duty}"name="duty" id="duty" class="form-control input-lg" placeholder="Duties (write as many duties separated by comma)" tabindex="6">
                         </div>
+                        <div th:if="${#fields.hasErrors('duty')}"  th:errors="*{duty}"
+                             class="well alert alert-warning" role="alert"></div>
 
                         <hr class="colorgraph">
                         <div class="row">

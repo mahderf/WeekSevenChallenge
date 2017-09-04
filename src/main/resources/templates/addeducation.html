@@ -69,11 +69,18 @@
                         <div class="form-group">
                             <input type="text" th:field="*{fieldofstudy}" name="field_of_study" id="field_of_study" class="form-control input-lg" placeholder="Field Of Study" tabindex="3">
                         </div>
+                        <div th:if="${#fields.hasErrors('fieldofstudy')}"  th:errors="*{fieldofstudy}"
+                        class="well alert alert-warning" role="alert"></div>
                         <div class="form-group">
                             <input type="text" th:field="*{institute}" name="email" id="institute" class="form-control input-lg" placeholder="Institute" tabindex="4">
-                        </div><div class="form-group">
+                        </div>
+                        <div th:if="${#fields.hasErrors('institute')}"  th:errors="*{institute}"
+                             class="well alert alert-warning" role="alert"></div>
+                        <div class="form-group">
                         <input type="text" th:field="*{year}"name="year" id="email" class="form-control input-lg" placeholder="Year of Graduation(yyyy)" tabindex="5">
                     </div>
+                        <div th:if="${#fields.hasErrors('year')}"  th:errors="*{year}"
+                             class="well alert alert-warning" role="alert"></div>
                         <hr class="colorgraph">
                         <div class="row">
                             <div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>

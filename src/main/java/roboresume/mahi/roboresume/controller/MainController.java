@@ -35,11 +35,6 @@ public class MainController {
     public String Welcomepage(Model model)
     {
         String message="Welcome to Robo Resume";
-        model.addAttribute("message", message);
-        model.addAttribute("numberOfPerson", resumeRepository.count());
-        model.addAttribute("numberOfEdu",educationRepository.count());
-        model.addAttribute("numberOfExpr",workRepository.count());
-        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "welcome";
     }
 
@@ -48,10 +43,6 @@ public class MainController {
     public String PersonalInfo(Model model)
     {
         model.addAttribute("robopersonal", new RoboResume());
-        model.addAttribute("numberOfPerson", resumeRepository.count());
-        model.addAttribute("numberOfEdu",educationRepository.count());
-        model.addAttribute("numberOfExpr",workRepository.count());
-        model.addAttribute("numberOfSkill",skillsRepository.count());
         return"addpersonalinfo";
     }
 
@@ -64,7 +55,11 @@ public class MainController {
             return "addpersonalinfo";
         }
         System.out.println("person id:"   +otherpersonal.getId());
-
+        Iterable<RoboResume>testid=resumeRepository.findAllById(otherpersonal.getId());
+        long count=testid.spliterator().getExactSizeIfKnown();
+        if(count>0){
+            return "redirect:editinfo/" + otherpersonal.getId();
+        }
         resumeRepository.save(otherpersonal);
 //        model.addAttribute("numberOfPerson", resumeRepository.count());
 //        model.addAttribute("numberOfEdu",educationRepository.count());
@@ -88,13 +83,19 @@ public class MainController {
         return"addeducation";
     }
     @PostMapping("/addeducation")
-    public String PostEducation(@Valid @ModelAttribute("roboeducation") Education othereducation, BindingResult
-            bindingResult, Model model)
+    public String PostEducation(@Valid @ModelAttribute("roboeducation") Education othereducation,
+                                BindingResult bindingResult, Model model)
     {
+        RoboResume robopersonal=new RoboResume();
         if(bindingResult.hasErrors())
         {
             return "addeducation";
         }
+//        Iterable<Education>testid=educationRepository.findAllById(othereducation.getId());
+//        long count=testid.spliterator().getExactSizeIfKnown();
+//        if(count>0){
+//            return "redirect:editinfo/" + persid;
+//        }
         educationRepository.save(othereducation);
         model.addAttribute("numberOfEdu",educationRepository.count());
         model.addAttribute("numberOfPerson", resumeRepository.count());
@@ -183,7 +184,11 @@ public class MainController {
                                      @ModelAttribute("aPerson") RoboResume p,
                                      Model model)
     {
+
+        System.out.println("person ID"+personId);
+        System.out.println("Course ID"+courseID);
         Courses cr=courseRepository.findOne(new Long(courseID));
+//        RoboResume pr=resumeRepository.findOne(new Long(personId));
         cr.addRoboResume(resumeRepository.findOne(new Long(personId)));
         courseRepository.save(cr);
         model.addAttribute("personlist",resumeRepository.findAll());

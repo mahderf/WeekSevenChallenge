@@ -83,7 +83,7 @@
                                 <td><p th:text="${item.firstname} +' '+${item.lastname}" /></td>
                                 <td><p th:text="${item.email}" /></td>
                                 <td>
-                                    <a th:href="@{/updateperson/{id}(id=${item.id})}" th:if="${numberOfPerson=1}"
+                                    <a th:href="@{/editinfo/{id}(id=${item.id})}" th:if="${numberOfPerson=1}"
                                        class="active">Edit</a>-
                                     <a th:href="@{/viewresume/{id}(id=${item.id})}" >View Resume</a><br/>
                                     <a th:href="@{/addeducation/{id}(id=${item.id})}">Add Education</a>-

@@ -9,7 +9,6 @@
     <meta name="author" content="">
 
     <title>Robo Resume</title>
-
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -69,18 +68,22 @@
                         <div class="form-group">
                             <input type="text" th:field="*{skillname}" name="skillname" id="skillname" class="form-control input-lg" placeholder="Skill" tabindex="3">
                         </div>
+                        <div th:if="${#fields.hasErrors('skillname')}"  th:errors="*{skillname}"
+                             class="well alert alert-warning" role="alert"></div>
                         <div class="form-group">
                             <input type="text" th:field="*{rating}" name="rating" id="rating" class="form-control input-lg" placeholder="Rate the Skill(skilled,familiar or proficient)" tabindex="4">
+                        </div>
+                        <div th:if="${#fields.hasErrors('rating')}"  th:errors="*{rating}"
+                             class="well alert alert-warning" role="alert"></div>
                             <hr class="colorgraph">
                             <div class="row">
                                 <div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
                                 <!--<div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>-->
                             </div>
-                            </div>
+
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
 </header>
