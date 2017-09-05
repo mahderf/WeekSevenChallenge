@@ -24,6 +24,7 @@
     <!-- Custom styles for this template -->
     <link href="../css/creative.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/newfile.css">
 
 </head>
 
@@ -68,27 +69,18 @@
                         <h3><p  align="center" th:text="'Field of Study: '+ ${roboeducation.fieldofstudy}" /></h3>
                         <h3><p  align="center" th:text="'Year Graduated: '+ ${{roboeducation.year}}" /></h3>
                         <h3><p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" /></h3>
-
-                        <div class="col-xs-6 col-md-6">
+                    </section>
+                    </main>
+                    <hr class="colorgraph">
+                        <div class="col-xs-6 col-md-8">
                             <a th:href="@{addeducation/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-success btn-block btn-lg"><small>Add another Education</small></a>
                         </div><br/>
 
-                        <div class="col-xs-6 col-md-3">
+                        <div class="col-xs-6 col-md-2">
 
                             <a th:href="@{addworkexperience/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-success btn-block btn-lg" ><small>Next</small></button></a>
                         </div><br/>
 
-                        <!--<div class="col-xs-6 col-md-6">-->
-                            <!--<a th:href="@{/updateeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>0}"-->
-                               <!--class="active" class="btn btn-success btn-block btn-lg" >Edit</a>&#45;&#45;-->
-
-                            <!--<a th:href="@{/deleteeducation/{id}(id=${roboeducation.id})}" th:if="${numberOfEdu>1}"-->
-                               <!--class="active" class="btn btn-success btn-block btn-lg" >Delete</a>-->
-                        <!--</div><br/>-->
-
-                    </section>
-                    </main>
-                    <hr class="colorgraph">
                 </div>
             </div>
 

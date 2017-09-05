@@ -24,6 +24,7 @@
     <!-- Custom styles for this template -->
     <link href="../css/creative.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/newfile.css">
 
 </head>
 
@@ -64,23 +65,19 @@
                     <main class="wrapper">
                         <section class="section-form">
                             <h1>Information Entered</h1>
+
                             <h2><p  align="center" th:text="'First Name: '+ ${robopersonal.firstname}" /></h2>
                             <h2> <p  align="center" th:text="'Last Name: '+ ${robopersonal.lastname}" /></h2>
                             <h2><p  align="center" th:text="'Email Address: '+ ${robopersonal.email}" /></h2>
 
-<div class="row">
-                            <div class="col-xs-6 col-md-3">
-                                <a   th:href="@{addeducation/{id}(id=${robopersonal.id})}" class="btn btn-success btn-block btn-lg" ><small>Next</small></a>
-
-                                <a th:href="@{/updateperson/{id}(id=${robopersonal.id})}"
-                                   th:if="${numberOfPerson=1}" class="active" class="btn btn-success btn-block btn-lg"><small>Edit</small></a>
-                            </div>
-</div>
                         </section>
-
-
                     </main>
+                    <div class="col-xs-6 col-md-5">
+                        <a   th:href="@{addeducation/{id}(id=${robopersonal.id})}" class="btn btn-success btn-block btn-lg" ><small>Next</small></a>
 
+                        <a th:href="@{/updateperson/{id}(id=${robopersonal.id})}"
+                           th:if="${numberOfPerson=1}" class="active" class="btn btn-success btn-block btn-lg"><small>Edit</small></a>
+                    </div>
                 </div>
             </div>
             <!-- Modal -->
