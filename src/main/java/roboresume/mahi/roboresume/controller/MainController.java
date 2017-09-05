@@ -97,10 +97,10 @@ public class MainController {
 //            return "redirect:editinfo/" + persid;
 //        }
         educationRepository.save(othereducation);
-        model.addAttribute("numberOfEdu",educationRepository.count());
-        model.addAttribute("numberOfPerson", resumeRepository.count());
-        model.addAttribute("numberOfExpr",workRepository.count());
-        model.addAttribute("numberOfSkill",skillsRepository.count());
+        model.addAttribute("numberOfEdu",educationRepository);
+//        model.addAttribute("numberOfPerson", resumeRepository.count());
+//        model.addAttribute("numberOfExpr",workRepository.count());
+//        model.addAttribute("numberOfSkill",skillsRepository.count());
         return "educationresult";
     }
 
