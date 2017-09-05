@@ -63,11 +63,14 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                     <hr class="colorgraph">
+                    <main class="wrapper">
                     <section class="section-form">
                         <h1>Information Entered</h1>
                         <h3> <p  align="center" th:text="'Skill: '+ ${roboskills.skillname}" /></h3>
                         <h3><p  align="center" th:text="'Rating: '+ ${roboskills.rating}" /></h3>
 
+                    </section>
+                    </main>
                         <div class="col-xs-6 col-md-8">
                             <a th:href="@{addskills/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-success btn-block btn-lg">Add Another Skill</a>
                         </div><br/>
@@ -81,7 +84,7 @@
                         <!--<a th:href="@{/updateskill/{id}(id=${roboskills.id})}"th:if="${numberOfSkill>0}" class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a> - -->
                         <!--<a th:href="@{/deleteskill/{id}(id=${roboskills.id})}" th:if="${numberOfSkill>1}"  class="active" class="btn btn-dark btn-lg js-scroll-trigger">Delete</a>-->
                         <!--</div>-->
-                    </section>
+
                     <hr class="colorgraph">
                     <div class="row">
                         <!--<div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>-->

@@ -54,12 +54,12 @@ public class MainController {
         {
             return "addpersonalinfo";
         }
-        System.out.println("person id:"   +otherpersonal.getId());
-        Iterable<RoboResume>testid=resumeRepository.findAllById(otherpersonal.getId());
-        long count=testid.spliterator().getExactSizeIfKnown();
-        if(count>0){
-            return "redirect:editinfo/" + otherpersonal.getId();
-        }
+//        System.out.println("person id:"   +otherpersonal.getId());
+//        Iterable<RoboResume>testid=resumeRepository.findAllById(otherpersonal.getId());
+//        long count=testid.spliterator().getExactSizeIfKnown();
+//        if(count>0){
+//            return "redirect:editinfo/" + otherpersonal.getId();
+//        }
         resumeRepository.save(otherpersonal);
 //        model.addAttribute("numberOfPerson", resumeRepository.count());
 //        model.addAttribute("numberOfEdu",educationRepository.count());

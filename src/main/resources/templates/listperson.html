@@ -85,13 +85,13 @@
                                 <td><p th:text="${item.email}" /></td>
                                 <td>
                                     <a th:href="@{/editinfo/{id}(id=${item.id})}" th:if="${numberOfPerson=1}"
-                                       class="active">Edit</a>-
-                                    <a th:href="@{/viewresume/{id}(id=${item.id})}" >View Resume</a><br/>
-                                    <a th:href="@{/addeducation/{id}(id=${item.id})}">Add Education</a>-
+                                       class="active"><small>Edit</small></a>-
+                                    <a th:href="@{/viewresume/{id}(id=${item.id})}" ><small>View Resume</small></a><br/>
+                                    <a th:href="@{/addeducation/{id}(id=${item.id})}"><small>Add Education</small></a>-
 
-                                    <a th:href="@{/addworkexperience/{id}(id=${item.id})}">Add Experience</a>-
+                                    <a th:href="@{/addworkexperience/{id}(id=${item.id})}"><small>Add Experience</small></a>-
 
-                                    <a th:href="@{/addskills/{id}(id=${item.id})}" >Add Skills</a>
+                                    <a th:href="@{/addskills/{id}(id=${item.id})}" ><small>Add Skills</small></a>
 
                                 </td>
                             </tr>
