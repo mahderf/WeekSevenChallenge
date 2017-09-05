@@ -197,9 +197,22 @@ public class MainController {
         for(RoboResume item:people) {
             System.out.println(item.getFirstname());
         }
-        return "redirect:/welcome";
+        return "redirect:/courselist";
     }
 
+    @GetMapping("/courselist")
+    public String listCourse(Model model)
+    {
+        model.addAttribute("course", courseRepository.findAll());
+        return"courselist";
+    }
+
+    @GetMapping("/courses for student/{id}")
+    public String CousesForStudent(@PathVariable("id") long id, Model model)
+    {
+        model.addAttribute("coursreg", courseRepository.findCoursesById(id));
+        return"studentscourse";
+    }
 
     @GetMapping("/viewresume/{id}")
 

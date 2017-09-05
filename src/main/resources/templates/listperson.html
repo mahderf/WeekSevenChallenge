@@ -46,12 +46,9 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
                 </li>
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
-                <!--</li>-->
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/courselist">List Courses</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -92,6 +89,7 @@
                                     <a th:href="@{/addworkexperience/{id}(id=${item.id})}"><small>Add Experience</small></a>-
 
                                     <a th:href="@{/addskills/{id}(id=${item.id})}" ><small>Add Skills</small></a>
+                                    <!--<a th:href="@{/coursesforstudent/{id}(id=${item.id})}" ><small>Courses Registered</small></a>-->
 
                                 </td>
                             </tr>

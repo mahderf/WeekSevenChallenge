@@ -5,4 +5,5 @@ import roboresume.mahi.roboresume.models.Courses;
 
 public interface CourseRepository extends CrudRepository<Courses, Long>{
 
+    Iterable<Courses>findCoursesById(Long Long);
 }
