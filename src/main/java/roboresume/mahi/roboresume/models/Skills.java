@@ -15,7 +15,7 @@ public class Skills {
     private String rating;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    private RoboResume roboResumeSkill;
+    private Person personskill;
 
     public long getId() {
         return id;
@@ -41,11 +41,11 @@ public class Skills {
         this.rating = rating;
     }
 
-    public RoboResume getRoboResumeSkill() {
-        return roboResumeSkill;
+    public Person getPersonskill() {
+        return personskill;
     }
 
-    public void setRoboResumeSkill(RoboResume roboResumeSkill) {
-        this.roboResumeSkill = roboResumeSkill;
+    public void setPersonskill(Person personskill) {
+        this.personskill = personskill;
     }
 }

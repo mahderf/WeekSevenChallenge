@@ -27,7 +27,7 @@ public class Education {
     private String institute;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    private RoboResume roboResumeEdu;
+    private Person personeducation;
 
     public String getFieldofstudy() {
         return fieldofstudy;
@@ -61,12 +61,12 @@ public class Education {
         this.id = id;
     }
 
-    public RoboResume getRoboResumeEdu() {
-        return roboResumeEdu;
+    public Person getPersoneducation() {
+        return personeducation;
     }
 
-    public void setRoboResumeEdu(RoboResume roboResumeEdu) {
-        this.roboResumeEdu = roboResumeEdu;
+    public void setPersoneducation(Person personeducation) {
+        this.personeducation = personeducation;
     }
 }
 

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SpringBoot20</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/creative.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/newfile.css">
+
+</head>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/welcome">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="/login">Login</a>
+                </li>
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</nav>s
+
+<header class="masthead">
+    <div class="header-content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-6">
+                    <form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <h2>Sign up<small>Here.</small></h2>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <!--<div class="col-xs-6 col-sm-6 col-md-6">-->
+                                <!--<div class="form-group">-->
+                                    <!--<input type="checkbox" name="company" th:checked="${company}" th:value="{user.id}"></div>-->
+                            <!--</div>-->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" th:field="*{firstName}" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+                                </div>
+                                <div th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"
+                                     class="well alert alert-warning" role="alert"></div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" th:field="*{lastName}" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+                                </div>
+                                <div th:if="${#fields.hasErrors('lastName')}"  th:errors="*{lastName}"
+                                     class="well alert alert-warning" role="alert"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" th:field="*{email}"name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+                        </div>
+                        <div th:if="${emcount>0}" class="well alert alert-danger"  th:text="${emmsg}"></div>
+                        <div th:if="${#fields.hasErrors('email')}"  th:errors="*{email}"
+                             class="well alert alert-warning" role="alert"></div>
+                        <div class="form-group">
+                            <input type="text" th:field="*{username}"name="email" id="username" class="form-control input-lg" placeholder="Username" tabindex="4">
+                        </div>
+                        <div th:if="${count>0}" class="well alert alert-danger"  th:text="${msg}"></div>
+                        <div th:if="${#fields.hasErrors('username')}"  th:errors="*{username}"
+                             class="well alert alert-warning" role="alert"></div>
+                        <div class="form-group">
+                            <input type="password" th:field="*{password}"name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="4">
+                            <!--<input type="password" th:field="*{password}"name="confirm_password" id="confirm_password" class="form-control input-lg" placeholder="Confirm Password" tabindex="4">-->
+                        </div>
+                        <div th:if="${#fields.hasErrors('password')}"  th:errors="*{password}"
+                             class="well alert alert-warning" role="alert"></div>
+                        <!--<div>-->
+                        <!--<input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  />-->
+                        <!--<input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />-->
+                        <!--</div>-->
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Bootstrap core JavaScript -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/popper/popper.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="../js/creative.min.js"></script>
+
+</body>
+
+</html>

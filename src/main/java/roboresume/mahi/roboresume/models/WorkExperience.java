@@ -21,7 +21,7 @@ public class WorkExperience {
 
 
     @ManyToOne(fetch=FetchType.EAGER)
-    private RoboResume roboResumeExp;
+    private Person personexperience;
 
     public String getOrganization() {
         return organization;
@@ -71,12 +71,12 @@ public class WorkExperience {
         this.id = id;
     }
 
-    public RoboResume getRoboResumeExp() {
-        return roboResumeExp;
+    public Person getPersonexperience() {
+        return personexperience;
     }
 
-    public void setRoboResumeExp(RoboResume roboResumeExp) {
-        this.roboResumeExp = roboResumeExp;
+    public void setPersonexperience(Person personexperience) {
+        this.personexperience = personexperience;
     }
 }
 
