@@ -171,12 +171,18 @@ else
     }
     @PostMapping("/addskills")
     public String PostSkill(@Valid @ModelAttribute("newskill") Skills otherskill, BindingResult bindingResult,
-              Model model)
+            Principal principal,Model model)
     {
+        Person person=personRepository.findAllByUsername(principal.getName());
         if (bindingResult.hasErrors()) {
             return "addskills";
         }
         skillsRepository.save(otherskill);
+        //to redirect the recruiter to the assign skills after adding a new skill
+//                if(person.getRoleselect().equalsIgnoreCase("RECRUITER")
+//        {
+//            return "redirect:"
+//        }
 
         return "redirect:/welcome";
     }
@@ -227,11 +233,10 @@ else
 //        return "redirect:/addjob";
         return "redirect:/addskilltojob/" + id;
     }
-    @GetMapping("/viewresume/{id}")
-
-    public String PostResume(@PathVariable("id") long id,Model model)
+    @GetMapping("/viewresume")
+    public String PostResume( Principal principal,Model model)
     {
-        model.addAttribute("robo",personRepository.findPersonById(id));
+        model.addAttribute("person",personRepository.findAllByUsername(principal.getName()));
         return "viewresume";
     }
     @GetMapping("/editinfo/{id}")
@@ -285,4 +290,6 @@ else
 
         return "welcome2";
     }
+
+
 }
