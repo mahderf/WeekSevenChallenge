@@ -14,6 +14,9 @@ public class PersonRole {
     @Column(unique = true)
     private String role;
 
+    @Column(nullable = false)
+    private String roleselect;
+
     @ManyToMany(mappedBy = "personRoles", fetch = FetchType.LAZY)
     private Collection<Person> people;
 
@@ -44,6 +47,14 @@ public class PersonRole {
 
     public void setPeople(Collection<Person> people) {
         this.people = people;
+    }
+
+    public String getRoleselect() {
+        return roleselect;
+    }
+
+    public void setRoleselect(String roleselect) {
+        this.roleselect = roleselect;
     }
 
     public void addUser(Person usr)
