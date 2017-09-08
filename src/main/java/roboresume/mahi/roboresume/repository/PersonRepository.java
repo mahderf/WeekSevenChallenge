@@ -13,5 +13,6 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
     Iterable<Person>findAllByEmail(String email);
     Iterable<Person>findAllById(Long Long);
     Iterable<Person>findPersonById(Long Long);
+    Iterable<Person>findAllByFirstName(String partialstring);
 
 }

@@ -72,6 +72,7 @@ else
         model.addAttribute("user", person);
 
 
+
 // checks if the username already exists
         Person checkusername=personRepository.findAllByUsername(person.getUsername());
         if (checkusername!=null) {
@@ -81,15 +82,15 @@ else
             return "registration";
         }
 // checks if an email already is registered
-        Iterable<Person> checkemail = personRepository.findAllByEmail(person.getEmail());
-        long emcount = checkemail.spliterator().getExactSizeIfKnown();
-        System.out.println("++++++++++++++++++" + emcount + "++++++++++++++");
-        if (emcount > 0) {
-            String existingemail = "This email address '" + person.getEmail() + "' is already registered.";
-            model.addAttribute("emmsg", existingemail);
-            model.addAttribute("emcount", emcount);
-            return "registration";
-        }
+//        Iterable<Person> checkemail = personRepository.findAllByEmail(person.getEmail());
+//        long emcount = checkemail.spliterator().getExactSizeIfKnown();
+//        System.out.println("++++++++++++++++++" + emcount + "++++++++++++++");
+//        if (emcount > 0) {
+//            String existingemail = "This email address '" + person.getEmail() + "' is already registered.";
+//            model.addAttribute("emmsg", existingemail);
+//            model.addAttribute("emcount", emcount);
+//            return "registration";
+//        }
 
         if (bindingResult.hasErrors()) {
             return "registration";
@@ -140,7 +141,6 @@ else
     @GetMapping("/addworkexperience")
     public String WorkInfo( WorkExperience otherexperience,Principal principal,Model model)
     {
-
        Person person=personRepository.findAllByUsername(principal.getName());
        otherexperience.setPersonexperience(person);
        model.addAttribute("newwork", otherexperience);
@@ -239,42 +239,53 @@ else
         model.addAttribute("person",personRepository.findAllByUsername(principal.getName()));
         return "viewresume";
     }
-    @GetMapping("/editinfo/{id}")
+    @GetMapping("/editinfo")
 
-    public String Editperson(@PathVariable("id") long id,Model model)
+    public String Editperson(Principal principal,Model model)
     {
-        model.addAttribute("robo",personRepository.findPersonById(id));
+        model.addAttribute("person",personRepository.findAllByUsername(principal.getName()));
         return "editinfo";
     }
 
-    @GetMapping("/listperson")
-    public String showTable( Person persons, Model model) {
+    @GetMapping("/searchpeople")
+    public String searchPeople(Model model) {
 
-        model.addAttribute("robo",personRepository.findAll());
-        return "listperson";
+        model.addAttribute("user",new Person());
+
+        return "searchpeople";
+    }
+
+    @PostMapping("/searchpeople")
+    public String showPeople(@ModelAttribute("user") Person otherperson,
+                             Model model) {
+
+        Iterable<Person>listpeople=personRepository.findAllByFirstName(otherperson.getFirstName());
+        model.addAttribute("person",listpeople);
+
+        return "peopleresult";
     }
 
     @GetMapping("/updateperson/{id}")
     public String editPerson(@PathVariable("id") long id, Model model){
-        model.addAttribute("robopersonal", personRepository.findOne(id));
+        model.addAttribute("user", personRepository.findOne(id));
 
-        return "addpersonalinfo";
+        return "registration";
     }
     @GetMapping("/updateeducation/{id}")
     public String updateEducation(@PathVariable("id") long id, Model model){
-        model.addAttribute("roboeducation", educationRepository.findOne(id));
+        model.addAttribute("neweducation", educationRepository.findOne(id));
 
         return "addeducation";
     }
     @GetMapping("/updateexperience/{id}")
     public String updateExperience(@PathVariable("id") long id, Model model){
-        model.addAttribute("robowork", workRepository.findOne(id));
+        model.addAttribute("newwork", workRepository.findOne(id));
 
         return "addworkexperience";
     }
     @GetMapping("/updateskill/{id}")
     public String updateSkill(@PathVariable("id") long id, Model model){
-        model.addAttribute("roboskills", skillsRepository.findOne(id));
+        model.addAttribute("newskill", skillsRepository.findOne(id));
 
         return "addskills";
     }

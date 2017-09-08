@@ -2,6 +2,7 @@ package roboresume.mahi.roboresume.models;
 
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -22,7 +23,7 @@ public class Person {
 
     @Column(name="first_name",nullable = false)
     private String firstName;
-
+    @NotEmpty
     @Column(name="password",nullable = false)
     private String password;
     @Column(name="last_name", nullable = false)

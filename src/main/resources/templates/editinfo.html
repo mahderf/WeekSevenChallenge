@@ -76,9 +76,9 @@
                             </tr>
                         </athead>
                         <tbody>
-                        <th:block th:each="item:${robo}">
+                        <th:block th:each="item:${person}">
                             <tr>
-                                <td><p th:text="${item.firstname} +' '+${item.lastname}" /></td>
+                                <td><p th:text="${item.firstName} +' '+${item.lastName}" /></td>
                                 <td><p th:text="${item.email}" /></td>
                                 <td>
                                     <a th:href="@{/updateperson/{id}(id=${item.id})}">Edit</a>
@@ -100,7 +100,7 @@
                             </tr>
                         </athead>
                         <tbody>
-                        <th:block th:each="item:${robo}">
+                        <th:block th:each="item:${person}">
                         <th:block th:each="p:${item.educations}">
                             <tr>
                                 <td><p th:text="${p.fieldofstudy}" /></td>
@@ -130,7 +130,7 @@
                             </tr>
                         </athead>
                         <tbody>
-                        <th:block th:each="item:${robo}">
+                        <th:block th:each="item:${person}">
                         <th:block th:each="p:${item.experiences}">
                             <tr>
                                 <td><p th:text="${p.position}" /></td>
@@ -161,7 +161,7 @@
                             </tr>
                         </athead>
                         <tbody>
-                        <th:block th:each="item:${robo}">
+                        <th:block th:each="item:${person}">
                         <th:block th:each="p:${item.skills}">
                             <tr>
                                 <td><p th:text="${p.skillname}" /></td>
