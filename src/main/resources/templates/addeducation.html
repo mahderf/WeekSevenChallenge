@@ -57,9 +57,9 @@
 
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-sm-offset-2 col-md-offset-3">
-                    <form action="#" th:action="@{/addeducation}" th:object="${roboeducation}" method="post">
-                        <input type="hidden" th:field="*{roboResumeEdu.id}">
-                        <input type="hidden" th:field="*{id}">
+                    <form action="#" th:action="@{/addeducation}" th:object="${neweducation}" method="post">
+                        <input type="text" th:field="*{personeducation.id}">
+                        <input type="text" th:field="*{id}">
                         <h2>Enter Education<small> Starting from the Recent Education.</small></h2>
                         <hr class="colorgraph">
                         <div class="form-group">

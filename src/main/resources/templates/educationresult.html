@@ -66,19 +66,19 @@
                     <main class="wrapper">
                     <section class="section-form">
                         <h1>Information Entered</h1>
-                        <h3><p  align="center" th:text="'Field of Study: '+ ${roboeducation.fieldofstudy}" /></h3>
-                        <h3><p  align="center" th:text="'Year Graduated: '+ ${{roboeducation.year}}" /></h3>
-                        <h3><p  align="center" th:text="'Email Address: '+ ${roboeducation.institute}" /></h3>
+                        <h3><p  align="center" th:text="'Field of Study: '+ ${neweducation.fieldofstudy}" /></h3>
+                        <h3><p  align="center" th:text="'Year Graduated: '+ ${{neweducation.year}}" /></h3>
+                        <h3><p  align="center" th:text="'Email Address: '+ ${neweducation.institute}" /></h3>
                     </section>
                     </main>
                     <hr class="colorgraph">
                         <div class="col-xs-6 col-md-8">
-                            <a th:href="@{addeducation/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-success btn-block btn-lg"><small>Add another Education</small></a>
+                            <a href="/addeducation" class="btn btn-success btn-block btn-lg"><small>Add another Education</small></a>
                         </div><br/>
 
                         <div class="col-xs-6 col-md-4">
 
-                            <a th:href="@{addworkexperience/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-success btn-block btn-lg" ><small>Next</small></button></a>
+                            <!--<a th:href="@{addworkexperience/{id}(id=${roboeducation.roboResumeEdu.id})}" class="btn btn-success btn-block btn-lg" ><small>Next</small></button></a>-->
                         </div><br/>
 
                 </div>

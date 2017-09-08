@@ -68,25 +68,19 @@
                         <div class="text-vertical-center">
                             <div class="section-form">
                                 <h1>Information Entered</h1>
-                                <h3><p  align="center" th:text="'Organization: '+ ${robowork.organization}" /></h3>
-                                <h3><p  align="center" th:text="'Position: '+ ${robowork.position}" /></h3>
-                                <h3><p  align="center" th:text="'Start Date: '+ ${{robowork.startdate}}" /></h3>
-                                <h3><p  align="center" th:text="'End Date: '+ ${{robowork.enddate}}" /></h3>
-                                <h3><p  align="center" th:text="'Duties: '+ ${robowork.duty}" /></h3>
+                                <h3><p  align="center" th:text="'Organization: '+ ${newwork.organization}" /></h3>
+                                <h3><p  align="center" th:text="'Position: '+ ${newwork.position}" /></h3>
+                                <h3><p  align="center" th:text="'Start Date: '+ ${{newwork.startdate}}" /></h3>
+                                <h3><p  align="center" th:text="'End Date: '+ ${{newwork.enddate}}" /></h3>
+                                <h3><p  align="center" th:text="'Duties: '+ ${newwork.duty}" /></h3>
                             </div>
                             </div>
                     </section>
                     </main>
                     <hr class="colorgraph">
                                 <div class="col-xs-6 col-md-8">
-                                    <a th:href="@{addworkexperience/{id}(id=${robowork.roboResumeExp.id})}" class="btn btn-success btn-block btn-lg">Add Another Experience</a>
+                                    <a href="/addworkexperience" class="btn btn-success btn-block btn-lg">Add Another Experience</a>
                                 </div><br/>
-
-                                <div class="col-xs-6 col-md-5">
-
-                                    <a th:href="@{addskills/{id}(id=${robowork.roboResumeExp.id})}" class="btn btn-success btn-block btn-lg">Next</a>
-                                </div><br/>
-
 
                     <div class="row">
                         <!--<div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>-->

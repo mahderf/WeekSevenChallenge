@@ -15,6 +15,7 @@ import roboresume.mahi.roboresume.service.PersonService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -40,10 +41,8 @@ public class MainController {
     {
 // checks if anyrole exists in the role repo and saves roles if there aren't any
         if(roleRepository.count()==0)
-            //to test the number of roles
-            System.out.println("Roles"+roleRepository.count());
         {
-            //this are the set of roles that exist in the database
+//            this are the set of roles that exist in the database
             PersonRole rolelist=new PersonRole();
             rolelist.setRole("JOBSEEKER");
             roleRepository.save(rolelist);
@@ -53,8 +52,11 @@ public class MainController {
             rolelist=new PersonRole();
             rolelist.setRole("ADMIN");
             roleRepository.save(rolelist);
+            return "welcome";
         }
-
+else
+        //to test the number of roles
+//        System.out.println("Roles"+roleRepository.count());
         return "welcome";
 
     }
@@ -68,14 +70,14 @@ public class MainController {
     public  String processRegistrationPage(@Valid @ModelAttribute("user") Person person,
                                            BindingResult bindingResult, Model model) {
         model.addAttribute("user", person);
+
+
 // checks if the username already exists
-        Iterable<Person> checkusername = personRepository.findAllByUsername(person.getUsername());
-        long count = checkusername.spliterator().getExactSizeIfKnown();
-        System.out.println("++++++++++++++++++" + count + "++++++++++++++");
-        if (count > 0) {
+        Person checkusername=personRepository.findAllByUsername(person.getUsername());
+        if (checkusername!=null) {
             String existingusername = "username '" + person.getUsername() + "' isn't available. Choose a different one";
             model.addAttribute("msg", existingusername);
-            model.addAttribute("count", count);
+            model.addAttribute("checkusername", checkusername);
             return "registration";
         }
 // checks if an email already is registered
@@ -106,12 +108,15 @@ public class MainController {
             personService.saveAdmin(person);
             model.addAttribute("message", "User Account Successfully Created");
         }
+
         return "login";
     }
 
     @RequestMapping(value="/addjob",method= RequestMethod.GET)
-    public String showJobForm(Model model)
+    public String showJobForm(Model model, Principal principal)
     {
+        // this is to check that principal is returning the loggedin user
+        System.out.println(principal.getName());
         model.addAttribute("job",new Job());
         return "addjob";
     }
@@ -127,72 +132,69 @@ public class MainController {
     }
 
     @GetMapping("/addeducation")
-    public String EducationInfo(Model model)
-    {
+    public String EducationInfo(Education othereducation,Principal principal,Model model)
 
-        model.addAttribute("neweducation", new Education());
+    {
+        Person person = personRepository.findAllByUsername(principal.getName());
+        othereducation.setPersoneducation(person);
+        model.addAttribute("neweducation", othereducation);
+
 
         return"addeducation";
     }
     @PostMapping("/addeducation")
-    public String PostEducation(@Valid @ModelAttribute("roboeducation") Education othereducation,
+    public String PostEducation(@Valid @ModelAttribute("neweducation") Education othereducation,
                                 BindingResult bindingResult, Model model)
     {
         if(bindingResult.hasErrors())
         {
             return "addeducation";
         }
-        Person nper= new Person();
-
-//        nper.setEducations();
-
         educationRepository.save(othereducation);
-        model.addAttribute("numberOfEdu",educationRepository);
-
-        return "educationresult";
+        return "redirect:/welcome";
     }
 
-    @GetMapping("/addworkexperience/{id}")
-    public String WorkInfo(@PathVariable("id") long id, Model model)
+    @GetMapping("/addworkexperience")
+    public String WorkInfo( WorkExperience otherexperience,Principal principal,Model model)
     {
 
-        WorkExperience otherexperience=new WorkExperience();
-        otherexperience.setPersonexperience(personRepository.findOne(id));
-
+       Person person=personRepository.findAllByUsername(principal.getName());
+       otherexperience.setPersonexperience(person);
+       model.addAttribute("newwork", otherexperience);
        return "addworkexperience";
     }
     @PostMapping("/addworkexperience")
-    public String PostWork(@Valid @ModelAttribute("robowork") WorkExperience otherwork, BindingResult bindingResult,
+    public String PostWork(@Valid @ModelAttribute("newwork") WorkExperience otherexperience, BindingResult bindingResult,
                             Model model)
     {
         if(bindingResult.hasErrors())
         {
             return "addworkexperience";
         }
-        workRepository.save(otherwork);
-        System.out.println(otherwork.getEnddate());
-
-        return "workresult";
+        workRepository.save(otherexperience);
+        //to see the end date
+        System.out.println("End Date"+otherexperience.getEnddate());
+        return "redirect:/welcome";
     }
 
-    @GetMapping("/addskills/{id}")
-    public String SkillInfo(@PathVariable("id") long id, Model model)
+    @GetMapping("/addskills")
+    public String SkillInfo(Skills otherskill,Principal principal, Model model)
     {
-        Skills otherskill= new Skills();
-        otherskill.setPersonskill(personRepository.findOne(id));
-
+        Person person=personRepository.findAllByUsername(principal.getName());
+        otherskill.setPersonskill(person);
+        model.addAttribute("newskill", otherskill);
         return "addskills";
     }
     @PostMapping("/addskills")
-    public String PostSkill(@Valid @ModelAttribute("roboskills") Skills otherskills, BindingResult bindingResult,
+    public String PostSkill(@Valid @ModelAttribute("newskill") Skills otherskill, BindingResult bindingResult,
               Model model)
     {
         if (bindingResult.hasErrors()) {
             return "addskills";
         }
-        skillsRepository.save(otherskills);
+        skillsRepository.save(otherskill);
 
-        return "skillsresult";
+        return "redirect:/welcome";
     }
 
     @GetMapping("/viewresume/{id}")

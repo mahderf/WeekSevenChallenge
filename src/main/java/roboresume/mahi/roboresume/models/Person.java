@@ -32,6 +32,7 @@ public class Person {
     private boolean enabled;
 
     @Column(name="username",unique = true, nullable = false)
+
     private String username;
 
     @Column(nullable = false)

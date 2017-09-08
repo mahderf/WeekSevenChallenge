@@ -66,24 +66,14 @@
                     <main class="wrapper">
                     <section class="section-form">
                         <h1>Information Entered</h1>
-                        <h3> <p  align="center" th:text="'Skill: '+ ${roboskills.skillname}" /></h3>
-                        <h3><p  align="center" th:text="'Rating: '+ ${roboskills.rating}" /></h3>
+                        <h3> <p  align="center" th:text="'Skill: '+ ${newskill.skillname}" /></h3>
+                        <h3><p  align="center" th:text="'Rating: '+ ${newskill.rating}" /></h3>
 
                     </section>
                     </main>
                         <div class="col-xs-6 col-md-8">
-                            <a th:href="@{addskills/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-success btn-block btn-lg">Add Another Skill</a>
+                            <a th:href="/addskills">Add Another Skill</a>
                         </div><br/>
-                        <div class="col-xs-6 col-md-6">
-                            <a th:href="@{/viewresume/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-success btn-block btn-lg">View Resume</a>
-                        </div><br/>
-                        <!--<div class="form-footer">-->
-                        <!--<a th:href="@{/editinfo/{id}(id=${roboskills.roboResumeSkill.id})}" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a>-->
-                        <!--</div><br/>-->
-                        <!--<div class="form-footer">-->
-                        <!--<a th:href="@{/updateskill/{id}(id=${roboskills.id})}"th:if="${numberOfSkill>0}" class="active" class="btn btn-dark btn-lg js-scroll-trigger" >Edit</a> - -->
-                        <!--<a th:href="@{/deleteskill/{id}(id=${roboskills.id})}" th:if="${numberOfSkill>1}"  class="active" class="btn btn-dark btn-lg js-scroll-trigger">Delete</a>-->
-                        <!--</div>-->
 
                     <hr class="colorgraph">
                     <div class="row">
