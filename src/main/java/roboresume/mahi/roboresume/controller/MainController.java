@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Controller
 public class MainController {
@@ -29,7 +30,34 @@ public class MainController {
     SkillsRepository skillsRepository;
     @Autowired
     PersonService personService;
+    @Autowired
+    RoleRepository roleRepository;
+    @Autowired
+    JobRepository jobRepository;
 
+    @GetMapping("/")
+    public String Welcomepage(Model model)
+    {
+// checks if anyrole exists in the role repo and saves roles if there aren't any
+        if(roleRepository.count()==0)
+            //to test the number of roles
+            System.out.println("Roles"+roleRepository.count());
+        {
+            //this are the set of roles that exist in the database
+            PersonRole rolelist=new PersonRole();
+            rolelist.setRole("JOBSEEKER");
+            roleRepository.save(rolelist);
+            rolelist=new PersonRole();
+            rolelist.setRole("RECRUITER");
+            roleRepository.save(rolelist);
+            rolelist=new PersonRole();
+            rolelist.setRole("ADMIN");
+            roleRepository.save(rolelist);
+        }
+
+        return "welcome";
+
+    }
     @RequestMapping(value="/register",method= RequestMethod.GET)
     public String showRegistrationPage(Model model)
     {
@@ -40,7 +68,7 @@ public class MainController {
     public  String processRegistrationPage(@Valid @ModelAttribute("user") Person person,
                                            BindingResult bindingResult, Model model) {
         model.addAttribute("user", person);
-
+// checks if the username already exists
         Iterable<Person> checkusername = personRepository.findAllByUsername(person.getUsername());
         long count = checkusername.spliterator().getExactSizeIfKnown();
         System.out.println("++++++++++++++++++" + count + "++++++++++++++");
@@ -50,7 +78,7 @@ public class MainController {
             model.addAttribute("count", count);
             return "registration";
         }
-
+// checks if an email already is registered
         Iterable<Person> checkemail = personRepository.findAllByEmail(person.getEmail());
         long emcount = checkemail.spliterator().getExactSizeIfKnown();
         System.out.println("++++++++++++++++++" + emcount + "++++++++++++++");
@@ -63,49 +91,46 @@ public class MainController {
 
         if (bindingResult.hasErrors()) {
             return "registration";
-        } else {
-            personService.saveUser(person);
+        }
+        // depending on the role selection this assign's the user a specific role
+        else if (person.getRoleselect().equalsIgnoreCase("jobseeker"))
+        {
+            personService.saveJobSeeker(person);
+        }
+        else if (person.getRoleselect().equalsIgnoreCase("recruiter"))
+        {
+            personService.saveRecruiter(person);
+        }
+        else if(person.getRoleselect().equalsIgnoreCase("admin"))
+            {
+            personService.saveAdmin(person);
             model.addAttribute("message", "User Account Successfully Created");
         }
         return "login";
     }
-    @GetMapping("/")
-    public String Welcomepage(Model model)
+
+    @RequestMapping(value="/addjob",method= RequestMethod.GET)
+    public String showJobForm(Model model)
     {
-        String message="Welcome to Robo Resume";
-        return "welcome";
+        model.addAttribute("job",new Job());
+        return "addjob";
+    }
+    @RequestMapping(value="/addjob", method = RequestMethod.POST)
+    public  String processJob(@Valid @ModelAttribute("job") Job job,
+                                           BindingResult bindingResult, Model model) {
+        model.addAttribute("job", job);
+
+        job.setJobskills(job.getJobskills());
+        jobRepository.save(job);
+
+       return"redirect:/addskills";
     }
 
-    @GetMapping("/addpersonalinfo")
-
-    public String PersonalInfo(Model model)
+    @GetMapping("/addeducation")
+    public String EducationInfo(Model model)
     {
-        model.addAttribute("robopersonal", new Person());
-        return"addpersonalinfo";
-    }
 
-    @PostMapping("/addpersonalinfo")
-    public String PostInfo(@Valid @ModelAttribute("robopersonal") Person otherpersonal, BindingResult bindingResult,
-                           Model model)
-    {
-        if(bindingResult.hasErrors())
-        {
-            return "addpersonalinfo";
-        }
-
-//            return "redirect:editinfo/" + otherpersonal.getId();
-
-        personRepository.save(otherpersonal);
-
-        return "personalresult";
-    }
-
-    @GetMapping("/addeducation/{id}")
-    public String EducationInfo(@PathVariable("id") long id,Model model)
-    {
-        Education othereducation= new Education();
-        othereducation.setPersoneducation(personRepository.findOne(id));
-        model.addAttribute("roboeducation", othereducation);
+        model.addAttribute("neweducation", new Education());
 
         return"addeducation";
     }
@@ -117,6 +142,9 @@ public class MainController {
         {
             return "addeducation";
         }
+        Person nper= new Person();
+
+//        nper.setEducations();
 
         educationRepository.save(othereducation);
         model.addAttribute("numberOfEdu",educationRepository);
@@ -213,7 +241,6 @@ public class MainController {
 
         return "addskills";
     }
-
 
     @GetMapping("/login")
     public String logon(Model model) {

@@ -2,6 +2,8 @@ package roboresume.mahi.roboresume.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 public class Skills {
@@ -16,6 +18,13 @@ public class Skills {
 
     @ManyToOne(fetch=FetchType.EAGER)
     private Person personskill;
+
+    @ManyToMany(mappedBy="jobskills", fetch = FetchType.LAZY)
+    private Collection<Job>jobs;
+
+    public Skills(){
+        this.jobs=new HashSet<Job>();
+    }
 
     public long getId() {
         return id;
@@ -47,5 +56,18 @@ public class Skills {
 
     public void setPersonskill(Person personskill) {
         this.personskill = personskill;
+    }
+
+    public Collection<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(Collection<Job> jobs) {
+        this.jobs = jobs;
+    }
+
+    public void addJob(Job jb)
+    {
+        jobs.add(jb);
     }
 }

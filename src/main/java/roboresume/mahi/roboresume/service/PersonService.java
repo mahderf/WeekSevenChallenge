@@ -28,8 +28,8 @@ public class PersonService {
     public Person findByUsername(String username){
         return personRepository.findByUsername(username);
     }
-    public void saveUser(Person person){
-        person.setPersonRoles(Arrays.asList(roleRepository.findByRole("USER")));
+    public void saveJobSeeker(Person person){
+        person.setPersonRoles(Arrays.asList(roleRepository.findByRole("JOBSEEKER")));
         person.setEnabled(true);
         personRepository.save(person);
     }
@@ -37,5 +37,10 @@ public class PersonService {
         person.setPersonRoles(Arrays.asList(roleRepository.findByRole("ADMIN")));
         person.setEnabled(true);
         personRepository.save(person);
+    }public void saveRecruiter(Person person){
+        person.setPersonRoles(Arrays.asList(roleRepository.findByRole("RECRUITER")));
+        person.setEnabled(true);
+        personRepository.save(person);
     }
+
 }
