@@ -9,6 +9,7 @@
     <meta name="author" content="">
 
     <title>Robo Resume</title>
+
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,6 +24,7 @@
     <!-- Custom styles for this template -->
     <link href="../css/creative.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/tablecss.css">
     <link rel="stylesheet" href="../css/newfile.css">
 
 </head>
@@ -60,33 +62,28 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                    <form action="#" th:action="@{/addskills}" th:object="${newskill}" method="post">
-                        <input type="text" th:field="*{personskill.id}">
-                        <input type="text" th:field="*{id}">
-                        <h2>Enter a Skill<small></small></h2>
-                        <hr class="colorgraph">
-                        <div class="form-group">
-                            <input type="text" th:field="*{skillname}" name="skillname" id="skillname" class="form-control input-lg" placeholder="Skill" tabindex="3">
-                        </div>
-                        <div th:if="${#fields.hasErrors('skillname')}"  th:errors="*{skillname}"
-                             class="well alert alert-warning" role="alert"></div>
-                        <div class="form-group">
-                            <input type="text" th:field="*{rating}" name="rating" id="rating" class="form-control input-lg" placeholder="Rate the Skill(skilled,familiar or proficient)" tabindex="4">
-                        </div>
-                        <div th:if="${#fields.hasErrors('rating')}"  th:errors="*{rating}"
-                             class="well alert alert-warning" role="alert"></div>
-                            <hr class="colorgraph">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-                                <!--<div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>-->
-                            </div>
+                <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
 
+                    <form th:action="@{/addskilltojob/{jobid}(jobid=${job.id})}" th:object="${aSkill}" method="post">
+                        <input type="number" th:value="${job.id}">
+                        <label th:inline="text">Adding a skill for [[${job.title}]]</label>
+
+                        <!--<select name="movies">-->
+                        <!--<option th:each="aMovie:${movieList}" th:value="${aMovie.id}" th:text="${aMovie.title}"></option>-->
+                        <!--</select>-->
+
+                        <select name="job">
+                            <option th:each="aSkill:${skilllist}" th:value="${aSkill.id}" th:text="${aSkill.skillname}"></option>
+                        </select>
+
+                        <input type="submit" value="Add a skill!">
                     </form>
+
                 </div>
             </div>
         </div>
     </div>
+
 </header>
 
 <!-- Bootstrap core JavaScript -->

@@ -112,24 +112,7 @@ else
         return "login";
     }
 
-    @RequestMapping(value="/addjob",method= RequestMethod.GET)
-    public String showJobForm(Model model, Principal principal)
-    {
-        // this is to check that principal is returning the loggedin user
-        System.out.println(principal.getName());
-        model.addAttribute("job",new Job());
-        return "addjob";
-    }
-    @RequestMapping(value="/addjob", method = RequestMethod.POST)
-    public  String processJob(@Valid @ModelAttribute("job") Job job,
-                                           BindingResult bindingResult, Model model) {
-        model.addAttribute("job", job);
 
-        job.setJobskills(job.getJobskills());
-        jobRepository.save(job);
-
-       return"redirect:/addskills";
-    }
 
     @GetMapping("/addeducation")
     public String EducationInfo(Education othereducation,Principal principal,Model model)
@@ -182,6 +165,7 @@ else
     {
         Person person=personRepository.findAllByUsername(principal.getName());
         otherskill.setPersonskill(person);
+
         model.addAttribute("newskill", otherskill);
         return "addskills";
     }
@@ -196,7 +180,53 @@ else
 
         return "redirect:/welcome";
     }
+    @RequestMapping(value="/addjob",method= RequestMethod.GET)
+    public String showJobForm(Model model)
+    {
+        // this is to check that principal is returning the loggedin user
 
+
+        model.addAttribute("job",new Job());
+        return "addjob";
+    }
+    @RequestMapping(value="/addjob", method = RequestMethod.POST)
+    public  String processJob(@Valid @ModelAttribute("job") Job job,
+                              BindingResult bindingResult, Model model) {
+//        HttpServletRequest
+// request.getParameter("");
+//        String redirectoskill="addskills";
+//        model.addAttribute("job", job);
+//        job.setJobskills(job.getJobskills());
+        jobRepository.save(job);
+
+//       return"redirect:"+ redirectoskill;
+        return "redirect:/addskilltojob/" + job.getId();
+    }
+
+    @GetMapping("/addskilltojob/{id}")
+    public String addSkillToJob(@PathVariable("id") long jobID, Model model)
+    {
+        System.out.println("Found Job ID"+jobID);
+        model.addAttribute("job", jobRepository.findOne(new Long(jobID)));
+        model.addAttribute("skilllist",skillsRepository.findAll());
+
+        return "jobaddskills";
+    }
+    @PostMapping("/addskilltojob/{jobid}")
+    public String Skilltojob(@PathVariable ("jobid") long id,
+                             @RequestParam("job") String jobID,
+                             @ModelAttribute("aSkill")Person p,
+                             Model model)
+    {
+        Job njob=jobRepository.findOne(new Long(id));
+        njob.addSkill(skillsRepository.findOne(new Long(jobID)));
+        jobRepository.save(njob);
+//        Person person=personRepository.findAllByUsername(principal.getName());
+//        otherskill.setPersonskill(person);
+
+//        return "redirect:/addjob";
+        return "redirect:/addskilltojob/" + id;
+    }
     @GetMapping("/viewresume/{id}")
 
     public String PostResume(@PathVariable("id") long id,Model model)
