@@ -41,6 +41,7 @@ public class PersonRole {
         this.role = role;
     }
 
+
     public Collection<Person> getPeople() {
         return people;
     }
