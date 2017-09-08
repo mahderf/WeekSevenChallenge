@@ -34,6 +34,9 @@ public class Person {
     @Column(name="username",unique = true, nullable = false)
     private String username;
 
+    @Column(nullable = false)
+    private String roleselect;
+
 //    @Column(name="company")
 //    private boolean company;
 
@@ -109,6 +112,14 @@ public class Person {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRoleselect() {
+        return roleselect;
+    }
+
+    public void setRoleselect(String roleselect) {
+        this.roleselect = roleselect;
     }
 
     public Collection<PersonRole> getPersonRoles() {
