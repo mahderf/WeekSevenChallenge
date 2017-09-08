@@ -67,24 +67,21 @@
                         <h2>Sign up<small>Here.</small></h2>
                         <hr class="colorgraph">
                         <div class="row">
+
                             <!--<div class="col-xs-6 col-sm-6 col-md-6">-->
                                 <!--<div class="form-group">-->
-                                    <!--<input type="checkbox" name="company" th:checked="${company}" th:value="{user.id}"></div>-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<p>Select One:</p>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<input type="radio" th:field="*{roleselect}" value="jobseeker" name="radio-btn" />Job Seeker or-->
+                                            <!--<input type="radio" th:field="*{roleselect}" value="recruiter" name="radio-btn" />Recruiters</li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<div th:if="${#fields.hasErrors('roleselect')}"  th:errors="*{roleselect}"-->
+                                     <!--class="well alert alert-warning" role="alert"></div>-->
                             <!--</div>-->
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <ul>
-                                        <li>
-                                            <p>Select One:</p>
-                                        </li>
-                                        <li>
-                                            <input type="radio" th:field="*{roleselect}" value="jobseeker" name="radio-btn" />Job Seeker or
-                                            <input type="radio" th:field="*{roleselect}" value="recruiter" name="radio-btn" />Recruiters</li>
-                                    </ul>
-                                </div>
-                                <div th:if="${#fields.hasErrors('roleselect')}"  th:errors="*{roleselect}"
-                                     class="well alert alert-warning" role="alert"></div>
-                            </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <input type="text" th:field="*{firstName}" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
