@@ -408,6 +408,10 @@ else
         //get all the skills in the jobSKills repository - place it in a local variable
         Iterable<Job> jobList = jobRepository.findAll();
 
+        boolean stopper = false;
+
+
+
         for (Job jb : jobList) {
             for (Skills nsk : jb.getJobskills()) {
 
@@ -416,6 +420,8 @@ else
 
                     if (nsk.getSkillname().equals(sk.getSkillname())) {
                         System.out.println("Job matching your skills found");
+                        System.out.println("Job found is: " + jb.getTitle());
+                        model.addAttribute("jobfound", jb.getTitle());
 
                     } else {
                         System.out.println("no Job found");
