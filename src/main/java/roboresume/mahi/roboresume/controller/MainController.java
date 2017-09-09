@@ -265,6 +265,24 @@ else
         return "peopleresult";
     }
 
+//    @GetMapping("/searchschool")
+//    public String searchSchool(Model model) {
+//
+//        model.addAttribute("neweducation",new Education());
+//
+//        return "searchschool";
+//    }
+//
+//    @PostMapping("/searchschool")
+//    public String searchSchool(@ModelAttribute("neweducation") Education othereducation,
+//                             Model model) {
+//
+//        Iterable<Education>listedu=educationRepository.findAllByInstitute(othereducation.getInstitute());
+//        model.addAttribute("educ",listedu);
+//
+//        return "schoolresult";
+//    }
+
     @GetMapping("/updateperson/{id}")
     public String editPerson(@PathVariable("id") long id, Model model){
         model.addAttribute("user", personRepository.findOne(id));
@@ -302,5 +320,18 @@ else
         return "welcome2";
     }
 
+    @GetMapping("/listjobs")
+    public String jobsListed(Model model)
+    {
+        model.addAttribute("joblist",jobRepository.findAll());
 
+        return"joblist";
+    }
+    @GetMapping("/jobdetail/{id}")
+    public String jobdetail(Model model)
+    {
+        model.addAttribute("joblist",jobRepository.findAll());
+
+        return"jobdetail";
+    }
 }

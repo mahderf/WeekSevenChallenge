@@ -5,6 +5,7 @@ import roboresume.mahi.roboresume.models.Education;
 
 public interface EducationRepository extends CrudRepository<Education, Long> {
     Iterable<Education>findAllById(Long Long);
+    Iterable<Education>findAllByInstitute(String partialstring);
 
 }
 
