@@ -401,7 +401,6 @@ else
         return "joblist";
     }
 
-
     @GetMapping("/jobsmatchingskill")
     public String jobMatchs(Principal principal,Skills nskill, Model model) {
 
@@ -409,8 +408,6 @@ else
         Iterable<Job> jobList = jobRepository.findAll();
 
         boolean stopper = false;
-
-
 
         for (Job jb : jobList) {
             for (Skills nsk : jb.getJobskills()) {
