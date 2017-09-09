@@ -3,6 +3,7 @@ package roboresume.mahi.roboresume.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import roboresume.mahi.roboresume.models.Person;
+import roboresume.mahi.roboresume.models.Skills;
 
 public interface PersonRepository extends CrudRepository<Person, Long> {
     Person findByUsername(String username);
@@ -14,5 +15,4 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
     Iterable<Person>findAllById(Long Long);
     Iterable<Person>findPersonById(Long Long);
     Iterable<Person>findAllByFirstName(String partialstring);
-
 }

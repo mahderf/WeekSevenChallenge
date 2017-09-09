@@ -69,13 +69,13 @@
 
                     <main class="wrapper">
                         <section class="section-form">
-                            <h1>Resume</h1>
+                            <h1>Job Posting</h1>
 
                             <div class="container">
                                 <hr />
                                 <div>
                                     <div class="panel panel-default">
-
+                                        <!--<input type="hidden" th:field="*{id}">-->
                                         <div class="panel-body">
                                             <div th:each="item:${joblist}">
                                                 <p th:text="${item.title}" />
@@ -96,20 +96,16 @@
                                                     </a>
                                                 </h4>
                                             </div>
-                                            <div id="collapseThree" class="panel-collapse collapse">
                                                 <div class="panel-body">
                                                     <div th:each="p:${joblist}">
                                                         <div th:each="item:${p.jobskills}">
                                                             <p  th:text=" ${item.skillname} +', '+ ${item.rating}" />
-
                                                         </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </section>
                     </main>
                 </div>
