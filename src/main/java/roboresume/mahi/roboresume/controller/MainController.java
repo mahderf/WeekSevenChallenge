@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -189,8 +188,6 @@ else
     public String showJobForm(Model model)
     {
         // this is to check that principal is returning the loggedin user
-
-
         model.addAttribute("job",new Job());
         return "addjob";
     }
@@ -232,29 +229,14 @@ else
         njob.addSkill(skillsRepository.findOne(new Long(jobID)));
         System.out.println("Before SAVING");
         jobRepository.save(njob);
-//        Person person=personRepository.findAllByUsername(principal.getName());
-//        otherskill.setPersonskill(person);
 
-//        return "redirect:/addjob";
-
-//        System.out.println("Before FOR loop");
-        //Iterable<Skills> test = skillsRepository.findAllBySkills(nskill.getSkillname());
-
-
-
-        /*for (Skills n : test ) {
-            System.out.println(n);
-        }*/
-
-        // extract the skillID in job_jobskills table
-//        System.out.println(skillsRepository.findOne(jobID));
-        System.out.println(nskill.getId());
-        for(Skills t:njob.getJobskills())
-        {
-            System.out.println(t.getSkillname());
-            System.out.println(t.getId());
-            System.out.println(personRepository.findOne(t.getPersonskill().getId()).getRoleselect()+"with ID"+t.getPersonskill().getId());
-        }
+//        System.out.println(nskill.getId());
+//        for(Skills t:njob.getJobskills())
+//        {
+//            System.out.println(t.getSkillname());
+//            System.out.println(t.getId());
+//            System.out.println(personRepository.findOne(t.getPersonskill().getId()).getRoleselect()+"with ID"+t.getPersonskill().getId());
+//        }
         System.out.println(njob.getJobskills());
         // compare the skillID in job_jobskill with skills table
 /*
@@ -293,43 +275,6 @@ else
         model.addAttribute("person",personRepository.findAllByUsername(principal.getName()));
         return "editinfo";
     }
-
-    @GetMapping("/searchpeople")
-    public String searchPeople(Model model) {
-
-        model.addAttribute("user",new Person());
-
-        return "searchpeople";
-    }
-
-    @PostMapping("/searchpeople")
-    public String showPeople(@ModelAttribute("user") Person otherperson,
-                             Model model) {
-
-        Iterable<Person>listpeople=personRepository.findAllByFirstName(otherperson.getFirstName());
-        model.addAttribute("person",listpeople);
-
-        return "peopleresult";
-    }
-//
-//    @GetMapping("/searchschool")
-//    public String searchSchool(Model model) {
-//
-//        model.addAttribute("neweducation",new Education());
-//
-//        return "searchschool";
-//    }
-//
-//    @PostMapping("/searchschool")
-//    public String searchSchool(@ModelAttribute("neweducation") Education othereducation,
-//                             Model model) {
-//
-//        Iterable<Education>listedu=educationRepository.findAllByInstitute(othereducation.getInstitute());
-//        model.addAttribute("educ",listedu);
-//
-//        return "schoolresult";
-//    }
-
 
     @GetMapping("/updateperson/{id}")
     public String editPerson(@PathVariable("id") long id, Model model){
@@ -382,7 +327,44 @@ else
 
         return"jobdetail";
     }
+//search for people and their resume using a person's name
+    @GetMapping("/searchpeople")
+    public String searchPeople(Model model) {
 
+        model.addAttribute("user",new Person());
+
+        return "searchpeople";
+    }
+    @PostMapping("/searchpeople")
+    public String showPeople(@ModelAttribute("user") Person otherperson,
+                             Model model) {
+
+        Iterable<Person>listpeople=personRepository.findAllByFirstName(otherperson.getFirstName());
+        model.addAttribute("person",listpeople);
+
+        return "peopleresult";
+    }
+
+    // search for person using the school they attended
+//    @GetMapping("/searchschool")
+//    public String searchSchool(Model model) {
+//
+//        model.addAttribute("neweducation",new Education());
+//
+//        return "searchschool";
+//    }
+//
+//    @PostMapping("/searchschool")
+//    public String searchSchool(@ModelAttribute("neweducation") Education othereducation,
+//                             Model model) {
+//        Iterable<Education>listedu=educationRepository.findAllByInstitute(othereducation.getInstitute());
+//        model.addAttribute("educ",listedu);
+//
+//        return "schoolresult";
+//    }
+
+
+    // searching for a job using job title
     @GetMapping("/searchjobs")
     public String searchJobs(Model model) {
 
@@ -390,7 +372,6 @@ else
 
         return "searchjobs";
     }
-
     @PostMapping("/searchjobs")
     public String searchJobs(@ModelAttribute("joblist") Job otherjob,
                              Model model) {
@@ -401,66 +382,58 @@ else
         return "joblist";
     }
 
-    @GetMapping("/jobsmatchingskill")
-    public String jobMatchs(Principal principal,Skills nskill, Model model) {
+    //search for jobs using the name of the employer
+    @GetMapping("/searchemployer")
+    public String searchEmployer(Model model) {
 
-        //get all the skills in the jobSKills repository - place it in a local variable
-        Iterable<Job> jobList = jobRepository.findAll();
+        model.addAttribute("joblist",new Job());
 
-        boolean stopper = false;
-
-        for (Job jb : jobList) {
-            for (Skills nsk : jb.getJobskills()) {
-
-                Person p = personRepository.findAllByUsername(principal.getName());
-                for (Skills sk : p.getSkills()) {
-
-                    if (nsk.getSkillname().equals(sk.getSkillname())) {
-                        System.out.println("Job matching your skills found");
-                        System.out.println("Job found is: " + jb.getTitle());
-                        model.addAttribute("jobfound", jb.getTitle());
-
-                    } else {
-                        System.out.println("no Job found");
-                    }
-                }
-            }
-        }
-
-
-            //personRepository.findAllByUsername(principal.getName())
-
-            //Recruiter's job skills
-        /*for (jobSkill : jobList) {
-            for (personSkill : p.getSkills()) {
-                if (personSkill.equals(jobSkill) {
-                    model.addAttribute("jobmatch", "Job has been found!");
-                }
-            }
-        }*/
-
-        /*for(int count=0; count<job.getJobskills().size(); count++){
-
-            //Person's skills
-            for(int test=0;test<p.getSkills().size();test++)
-            {
-                //if (get(test).getSkills())
-                //if(p.getSkills(test).equals(job.getJobskills())){
-
-                    System.out.println("yes a Job");
-//                    Iterable<Job>newjob=jobRepository.findAllByJobskills(job.getJobskills());
-//                    model.addAttribute("joblist",newjob);
-//                    return"joblist";
-                }
-
-                else {
-                    System.out.println("No Job Found");
-                }
-            }
-
-        }*/
-            return "joblist";
-
+        return "searchemployer";
     }
 
+    @PostMapping("/searchemployer")
+    public String emploerResult(@ModelAttribute("joblist") Job otherjob,
+                             Model model){
+
+        Iterable<Job>listjobs=jobRepository.findAllByEmployer(otherjob.getEmployer());
+        model.addAttribute("joblist",listjobs);
+
+        return "joblist";
+    }
+
+    // matching the skills of a job post with a person's skill set for notification
+    @GetMapping("/jobsmatchingskill")
+    public String jobMatchs(Principal principal,Skills nskill, Model model) {
+        //get all the skills in the jobSKills repository - place it in a local variable
+        Iterable<Job> jobList = jobRepository.findAll();
+        // the booleans are to stop the loop if it match's a person skill to a job's skill
+//        boolean stopper = false;
+//        boolean stopper2=false;
+        Set<Job> test=new HashSet<>();
+        for (Job jb : jobList) {
+            //loops through skills in jobs
+            for (Skills nsk : jb.getJobskills()) {
+//                while(stopper) {
+                //finds this person and loops through the skills of that person
+                    Person p = personRepository.findAllByUsername(principal.getName());
+                    for (Skills sk : p.getSkills()) {
+                        // checks if a job skill matches a person's skill
+                        if (nsk.getSkillname().equals(sk.getSkillname())) {
+                            System.out.println("Job matching your skills found");
+                            System.out.println("Job found is: " + jb.getTitle());
+                            test.add(jb);
+                            model.addAttribute("jobfound", test);
+//                            stopper = true;
+                            return "jobmessage";
+                        }
+                        else {
+                            System.out.println("no Job found");
+                        }
+
+                    }
+//                }
+            }
+        }
+            return "jobmessage";
+    }
 }

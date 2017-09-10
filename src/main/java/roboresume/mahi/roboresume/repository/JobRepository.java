@@ -14,6 +14,7 @@ public interface JobRepository extends CrudRepository<Job, Long>{
     Long countByTitle(String title);
     Long countByEmployer(String employer);
     Iterable<Job>findAllByTitle(String title);
+    Iterable<Job>findAllByEmployer(String partialstring);
     Iterable<Job>findAllByJobskills(Collection<Skills> skills, Collection<Skills>jobskills);
 //    Job findAllByJobskills(String jobskills);
 }
