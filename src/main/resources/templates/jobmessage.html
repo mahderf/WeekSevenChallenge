@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,6 +24,7 @@
     <!-- Custom styles for this template -->
     <link href="../css/creative.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/tablecss.css">
     <link rel="stylesheet" href="../css/newfile.css">
 
 </head>
@@ -49,48 +46,52 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
                 </li>
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
-                <!--</li>-->
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/courselist">List Courses</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
 <header class="masthead">
-    <div class="header-content">
+    <div class="text-vertical-center">
         <div class="container">
 
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
+                    <section class="section-table">
+                        <h2>List of Jobs</h2>
+                        <hr class="colorgraph">
+                        <div class="panel panel-default">
 
-                    <main class="wrapper">
-                        <section class="section-form">
-                            <h1>Resume</h1>
+                            <div>
 
-                            <div class="container">
-                                <hr />
-                                    <div class="panel panel-default">
+                                <table>
+                                    <athead>
+                                        <tr>
+                                            <th>Job Title</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </athead>
+                                    <tbody>
+                                    <th:block th:each="item:${joblist}">
+                                        <tr>
+                                            <td><p th:text="${item.title}" /></td>
+                                            <td>
+                                                <a th:href="@{/jobdetail/{id}(id=${item.id})}"
+                                                   class="active"><small>Detail</small></a>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                    </tbody>
+                                </table>
 
-                                        <div class="panel-body">
-                                            <div th:each="item:${jobfound}">
-                                                <p th:text="${item.title}" />
-                                            </div>
-                                        </div>
-                                        <!--<div th:each="p:${person}">-->
-                                            <!--<div th:each="item:${p.educations}">-->
-                                                <!--<p th:text="${item.fieldofstudy}" />-->
-                                                <!--<p th:text=" ${item.institute} +', '+ ${{item.year}}"/>-->
-
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    </div>
                             </div>
-                        </section>
-                    </main>
+
+                        </div>
+                        <hr class="colorgraph">
+                    </section>
                 </div>
             </div>
         </div>
