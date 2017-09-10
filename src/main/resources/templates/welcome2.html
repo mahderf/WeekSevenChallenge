@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -38,13 +38,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <div sec:authorize="hasAuthority('JOBSEEKER')">
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/addeducation">Add Education</a>
-                </li><li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/addworkexperience">Add Experience</a>
                 </li><li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/addskills">Add Skills</a>
                 </li>
+                </div>
+                <div sec:authorize="hasAuthority('RECRUITER')">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/addjob">Add Job</a>
+                </li>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/logout">Log Out</a>
+                </li>
+                </div>
                 <!--<li class="nav-item">-->
                     <!--<a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>-->
                 <!--</li>-->

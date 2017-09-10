@@ -35,6 +35,7 @@ public class MainController {
     @Autowired
     JobRepository jobRepository;
 
+    // this method also checks the role repo and load roles in it if there aren't any
     @GetMapping("/")
     public String Welcomepage(Model model)
     {
@@ -54,8 +55,6 @@ public class MainController {
             return "welcome";
         }
 else
-        //to test the number of roles
-//        System.out.println("Roles"+roleRepository.count());
         return "welcome";
 
     }
@@ -70,10 +69,12 @@ else
                                            BindingResult bindingResult, Model model) {
         model.addAttribute("user", person);
 
-
+    Iterable<Person>checkid= personRepository.findAllById(person.getId());
+    long numb=checkid.spliterator().getExactSizeIfKnown();
+    if(numb==0) {
 // checks if the username already exists
-        Person checkusername=personRepository.findAllByUsername(person.getUsername());
-        if (checkusername!=null) {
+        Person checkusername = personRepository.findAllByUsername(person.getUsername());
+        if (checkusername != null) {
             String existingusername = "username '" + person.getUsername() + "' isn't available. Choose a different one";
             model.addAttribute("msg", existingusername);
             model.addAttribute("checkusername", checkusername);
@@ -89,7 +90,7 @@ else
             model.addAttribute("emcount", emcount);
             return "registration";
         }
-
+    }
         if (bindingResult.hasErrors()) {
             return "registration";
         }
@@ -110,7 +111,6 @@ else
 
         return "login";
     }
-
 
 
     @GetMapping("/addeducation")
@@ -194,14 +194,7 @@ else
     @RequestMapping(value="/addjob", method = RequestMethod.POST)
     public  String processJob(@Valid @ModelAttribute("job") Job job,
                               BindingResult bindingResult, Model model) {
-//        HttpServletRequest
-// request.getParameter("");
-//        String redirectoskill="addskills";
-//        model.addAttribute("job", job);
-//        job.setJobskills(job.getJobskills());
         jobRepository.save(job);
-
-//       return"redirect:"+ redirectoskill;
         return "redirect:/addskilltojob/" + job.getId();
     }
 

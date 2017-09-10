@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -40,15 +40,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <div sec:authorize="hasAuthority('RECRUITER')">
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/addpersonalinfo">Add Person</a>
                 </li>
+                </div>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
                 </li>
+                <div sec:authorize="hasAuthority('RECRUITER')">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/addjob">addjob</a>
+                </li>
+                </div>
+                <div sec:authorize!="isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/register">Sign Up</a>
                 </li>
+                </div>
                 <!--<li class="nav-item">-->
                 <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
                 <!--</li>-->
@@ -82,6 +91,7 @@
         You have been logged out.
     </div>
     <button type="submit">login to your account</button>
+    <a class="nav-link js-scroll-trigger" href="/register">Sign Up</a>
 </form>
 </div>
 </div>
