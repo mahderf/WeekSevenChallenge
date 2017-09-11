@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 
-<head>
+<head th:fragment="headpart">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Robo Resume</title>
+    <title>Mini LinkedIn</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,83 +24,93 @@
     <!-- Custom styles for this template -->
     <link href="../css/creative.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/menudropdown.css">
 
 </head>
 
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/welcome">Home</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <div sec:authorize="hasAuthority('JOBSEEKER')">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/addeducation">Add Education</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/addworkexperience">Add Experience</a>
-                </li><li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/addskills">Add Skills</a>
-                </li>
-                </div>
-                <div sec:authorize="hasAuthority('RECRUITER')">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/addjob">Add Job</a>
-                </li>
-                </div>
-                <div sec:authorize="isAuthenticated()">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/logout">Log Out</a>
-                </li>
-                </div>
-                <!--<li class="nav-item">-->
-                    <!--<a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
-                <!--</li>-->
-            </ul>
+<ul id="dropdownmenu">
+    <li><a href="/welcome">Home</a></li>
+    <li>
+        <a href="#">Search</a>
+        <ul>
+            <li><a href="/searchpeople">Search name</a></li>
+            <li><a href="/searchschool">Search School</a></li>
+            <li><a href="/searchjobs">Search Jobs</a></li>
+            <li><a href="/searchemployer">Search Employer</a></li>
+        </ul>
+    </li>
+
+    <li><div sec:authorize="hasAuthority('RECRUITER')"><a href="/addjob">Add a Job </a></div></li>
+
+    <li>
+        <div sec:authorize="hasAuthority('JOBSEEKER')">
+        <a href="#">Add Info</a>
+        <ul>
+            <li><a href="/addeducation">Add Education</a></li>
+            <li><a href="/addworkexperience">Add Experience</a></li>
+            <li><a href="/addskills">Add Skills</a></li>
+        </ul>
         </div>
+    </li>
+
+    <li><div sec:authorize="hasAuthority('JOBSEEKER')">
+        <a href="/viewresume">View Resume</a></div></li>
+
+    <li><a href="/listjobs">Jobs</a></li>
+    <div sec:authorize="isAuthenticated()">
+    <li><a href="/logout">Logout</a></li>
     </div>
-</nav>
+
+</ul>
 
 <!-- Header -->
 <header class="masthead">
     <div class="header-content">
         <div class="container">
-
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
-        <h1>Welcome to Robo Resume</h1>
-        <h5>Where we build your Resume </h5>
-        <br/>
-    </div>
-    </div>
-    </div>
+                    <div class="container">
+                        <div sec:authorize="hasAuthority('RECRUITER')">
+                            <div class="starter-template">
+                                <h3 class="well">Welcome to <h1 class="well">Mini LinkedIn </h1>
+                                    <br/> Where you can Post Jobs and meet qualifyng Applicants</h3>
+                            </div>
+                        </div>
+                        <div sec:authorize="hasAuthority('JOBSEEKER')">
+                            <div class="starter-template">
+                                <h3 class="well">Welcome to <h1 class="well">Mini LinkedIn </h1>
+                                    <br/> Where you can build your Resume and Search for Jobs</h3>
+                            </div>
+                        </div>
+                        <div sec:authorize="hasAuthority('JOBSEEKER')">
+                            <div class="starter-template">
+                                <a class="nav-link js-scroll-trigger" href="/jobsmatchingskill">Job Alert!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 
 <!-- Bootstrap core JavaScript -->
-<script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/popper/popper.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<div th:fragment="footer">
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/popper/popper.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- Plugin JavaScript -->
-<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
-<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-<!-- Custom scripts for this template -->
-<script src="../js/creative.min.js"></script>
-
+    <!-- Custom scripts for this template -->
+    <script src="../js/creative.min.js"></script>
+</div>
 </body>
 
 </html>

@@ -16,26 +16,26 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    @NotEmpty
     @Column(name="email",nullable = false,unique = true)
     @Email
     private String email;
-
+    @NotEmpty
     @Column(name="first_name",nullable = false)
     private String firstName;
     @NotEmpty
     @Column(name="password",nullable = false)
     private String password;
+    @NotEmpty
     @Column(name="last_name", nullable = false)
     private  String lastName;
 
     @Column(name="enabled")
     private boolean enabled;
-
+    @NotEmpty
     @Column(name="username",unique = true, nullable = false)
-
     private String username;
-
+    @NotEmpty
     @Column(nullable = false)
     private String roleselect;
 

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head>
+<head xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +28,6 @@
     <!-- Custom styles for this template -->
     <link href="../css/creative.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/formcss.css">
-    <link rel="stylesheet" href="../css/tablecss.css">
     <link rel="stylesheet" href="../css/newfile.css">
 
 </head>
@@ -58,45 +61,36 @@
 </nav>
 
 <header class="masthead">
-    <div class="text-vertical-center">
+    <div class="header-content">
         <div class="container">
 
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
-                    <section class="section-table">
-                        <h2>List of Person</h2>
-                        <hr class="colorgraph">
-                        <div class="panel panel-default">
 
-                            <div>
+                    <main class="wrapper">
+                        <section class="section-form">
+                            <div class="container">
+                                <hr />
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                        Job Added
+                                                </h4>
+                                            </div>
+                                             <div class="panel panel-default">
+                                                 <div class="panel-body">
+                                                            <p th:text="${job.title}" />
+                                                            <p th:text="${job.employer}" />
+                                                            <p th:text="${job.salary}"/>
+                                                            <p th:text="${job.description}"/>
+                                                        </div>
+                                                    </div>
+                                                    <a th:href="@{/addskilltojob/{id}(id=${job.id})}">Add Skills to this job</a>
+                                                </div>
 
-                                <table>
-                                    <athead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Action</th>
-
-                                        </tr>
-                                    </athead>
-                                    <tbody>
-                                    <th:block th:each="item:${course}">
-                                        <tr>
-                                            <td><p th:text="${item.course}" /></td>
-                                            <td>
-                                                <a th:href="@{/addpeopletocourse/{crsid}(crsid=${item.id})}"
-                                                   class="active"><small>Add Person to course</small></a>
-
-                                            </td>
-                                        </tr>
-                                    </th:block>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                        </div>
-                        <hr class="colorgraph">
-                    </section>
+                                        </div>
+                                    </div>
+                        </section>
+                    </main>
                 </div>
             </div>
         </div>

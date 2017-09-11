@@ -45,25 +45,11 @@
                     <a class="nav-link js-scroll-trigger" href="/addpersonalinfo">Add Person</a>
                 </li>
                 </div>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/listperson">List Person</a>
-                </li>
-                <div sec:authorize="hasAuthority('RECRUITER')">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/addjob">addjob</a>
-                </li>
-                </div>
                 <div sec:authorize!="isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/register">Sign Up</a>
                 </li>
                 </div>
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
-                <!--</li>-->
             </ul>
         </div>
     </div>

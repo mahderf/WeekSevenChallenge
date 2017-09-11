@@ -157,7 +157,6 @@ else
     {
         Person person=personRepository.findAllByUsername(principal.getName());
         otherskill.setPersonskill(person);
-
         model.addAttribute("newskill", otherskill);
         return "addskills";
     }
@@ -170,10 +169,10 @@ else
             return "addskills";
         }
         skillsRepository.save(otherskill);
-        //to redirect the recruiter to the assign skills after adding a new skill
-//                if(person.getRoleselect().equalsIgnoreCase("RECRUITER")
+//        to redirect the recruiter to the assign skills after adding a new skill
+//                if(person.getRoleselect().equalsIgnoreCase("RECRUITER"))
 //        {
-//            return "redirect:"
+//            return "redirect: /listjobs";
 //        }
 
         return "redirect:/welcome";
@@ -189,7 +188,7 @@ else
     public  String processJob(@Valid @ModelAttribute("job") Job job,
                               BindingResult bindingResult, Model model) {
         jobRepository.save(job);
-        return "redirect:/addskilltojob/" + job.getId();
+        return "jobresult";
     }
 
     @GetMapping("/addskilltojob/{id}")
@@ -198,7 +197,12 @@ else
         System.out.println("Found Job ID"+jobID);
         model.addAttribute("job", jobRepository.findOne(new Long(jobID)));
         model.addAttribute("skilllist",skillsRepository.findAll());
-
+        Job newjob=jobRepository.findOne((new Long(jobID)));
+        Iterable<Skills>newskill=newjob.getJobskills();
+        model.addAttribute("skill4job", newskill);
+        for (Skills sk:newskill){
+            System.out.println(sk.getSkillname());
+        }
         System.out.println("Skill has just been added");
         return "jobaddskills";
     }
@@ -217,36 +221,7 @@ else
         System.out.println("Before SAVING");
         jobRepository.save(njob);
 
-//        System.out.println(nskill.getId());
-//        for(Skills t:njob.getJobskills())
-//        {
-//            System.out.println(t.getSkillname());
-//            System.out.println(t.getId());
-//            System.out.println(personRepository.findOne(t.getPersonskill().getId()).getRoleselect()+"with ID"+t.getPersonskill().getId());
-//        }
         System.out.println(njob.getJobskills());
-        // compare the skillID in job_jobskill with skills table
-/*
-        if(nskill.getSkillname().equals(skillsRepository.findAllByPersonskill(nskill.getSkillname()))) {
-            System.out.println(personRepository.findOne(nskill.getPersonskill().getId()));
-
-        }*/
-            // if there is a match
-            // extract the userID in the skills table
-            //nskill.getPersonskill().getId();
-            // output a notification
-
-        /*for (Skills personSkill : personRepository.findAllBySkills(nskill.getSkillname())) {
-            System.out.println("Entering the for each loop....");
-            if (njob.getJobskills().equals(personSkill)) {
-                model.addAttribute("matchMessages", "Match has been found for job: " + njob.getTitle());
-                System.out.println("Skill has been found to job: " + p.getFirstName() + "and with job: " + njob.getTitle());
-            }
-            else {
-                System.out.println("No match was found with skill: " + nskill.getSkillname());
-            }
-        }*/
-
         return "redirect:/addskilltojob/" + id;
     }
     @GetMapping("/viewresume")
@@ -287,10 +262,8 @@ else
 
         return "addskills";
     }
-
     @GetMapping("/login")
     public String logon(Model model) {
-
         return "login";
     }
 
@@ -332,29 +305,29 @@ else
         return "peopleresult";
     }
 
-    // search for person using the school they attended
-//    @GetMapping("/searchschool")
-//    public String searchSchool(Model model) {
-//
-//        model.addAttribute("neweducation",new Education());
-//
-//        return "searchschool";
-//    }
-//
-//    @PostMapping("/searchschool")
-//    public String searchSchool(@ModelAttribute("neweducation") Education othereducation,
-//                             Model model) {
-//        Iterable<Education>listedu=educationRepository.findAllByInstitute(othereducation.getInstitute());
-//        model.addAttribute("educ",listedu);
-//
-//        return "schoolresult";
-//    }
+//     search for person using the school they attended
+    @GetMapping("/searchschool")
+    public String searchSchool(Model model) {
 
+        model.addAttribute("neweducation",new Education());
 
+        return "searchschool";
+    }
+
+    @PostMapping("/searchschool")
+    public String searchSchool(@ModelAttribute("neweducation") Education othereducation,
+                             Model model) {
+        Education educ= educationRepository.findAllByInstitute(othereducation.getInstitute());
+        Iterable<Person>pr= personRepository.findAllById( educ.getPersoneducation().getId());
+        for(Person test:pr){
+            System.out.println(test.getUsername()+test.getFirstName());
+        }
+        model.addAttribute("person",pr);
+        return "peopleresult";
+    }
     // searching for a job using job title
     @GetMapping("/searchjobs")
     public String searchJobs(Model model) {
-
         model.addAttribute("joblist",new Job());
 
         return "searchjobs";
@@ -406,17 +379,16 @@ else
                     for (Skills sk : p.getSkills()) {
                         // checks if a job skill matches a person's skill
                         if (nsk.getSkillname().equals(sk.getSkillname())) {
+                            //a print out if a skill is matched
                             System.out.println("Job matching your skills found");
                             System.out.println("Job found is: " + jb.getTitle());
                             test.add(jb);
-
                         }
                         else {
+                            //a print out if a skill isn't matched
                             System.out.println("no Job found");
                         }
-
                     }
-
 //                            stopper = true;
 //                return "jobmessage";
 //                }
