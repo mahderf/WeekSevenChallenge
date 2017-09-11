@@ -24,58 +24,54 @@
     <!-- Custom styles for this template -->
     <link href="../css/creative.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/formcss.css">
+    <link rel="stylesheet" href="../css/tablecss.css">
+    <script src="../js/navjs.js"></script>
+    <link rel="stylesheet" href="../css/menudropdown.css">
     <link rel="stylesheet" href="../css/newfile.css">
-
 
 </head>
 
 <body id="page-top">
 
 <!-- Navigation -->
-<nav th:fragment="navpart" class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/welcome">Home</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <div sec:authorize="hasAuthority('RECRUITER')">
-                    <a class="nav-link js-scroll-trigger" href="/addjob">Add a new Job</a>
-                    </div>
-                </li><li class="nav-item">
-                    <div sec:authorize="hasAuthority('JOBSEEKER')">
-                    <a class="nav-link js-scroll-trigger" href="/addeducation">Add Education</a>
-                    </div>
-                </li><li class="nav-item">
-                    <div sec:authorize="hasAuthority('JOBSEEKER')">
-                    <a class="nav-link js-scroll-trigger" href="/addworkexperience">Add experience</a>
-                    </div>
-                </li><li class="nav-item">
-                    <div sec:authorize="hasAuthority('JOBSEEKER')">
-                    <a class="nav-link js-scroll-trigger" href="/addskills">Add Skills</a>
-                    </div>
+<nav nav th:fragment="navpart">
+    <ul class="navbar cf">
+        <li><a href="/welcome">Home</a></li>
+        <li><a href="/listjobs">Jobs</a></li>
+        <li>
+            <div sec:authorize="hasAuthority('RECRUITER')">
+                <a href="/addjob">Add JOb</a>
+            </div></li>
+        <li><a href="#">Search</a>
+            <ul>
+                <li><a href="/searchpeople">Search People</a></li>
+                <li><a href="/searchschool">Search School</a></li>
+                <li><a href="/searchjobs">Search Jobs</a>
+                <li><a href="/searchemployer">Search Employer</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/listjobs">Show Jobs</a>
-                </li><li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="/searchpeople">Search by name</a>
-            </li><li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="/searchschool">Search by School</a>
-            </li><li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="/searchjobs">Search Jobs</a>
-            </li><li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="/searchemployer">Search Employer</a>
-            </li>
-            <li class="nav-item">
-                <div sec:authorize="isAuthenticated()">
-                <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
-                </div>
-            </li>
             </ul>
+        </li>
+        <div sec:authorize="hasAuthority('JOBSEEKER')">
+            <li><a href="#">Add Info</a>
+                <ul>
+                    <li><a href="/addeducation">Add Education</a></li>
+                    <li><a href="/addworkexperience">Add experience</a></li>
+                    <li><a href="/addskills">Add Skills</a>
+                    <li><a href="/viewresume">Resume</a>
+                    <li><a href="/editinfo">Edit</a>
+                    </li>
+                    <!--<li><a href="#">item a little longer</a></li>-->
+                </ul>
+            </li>
         </div>
-    </div>
+        <li>
+            <div sec:authorize="isAuthenticated()">
+                <a href="/logout">Logout</a>\
+            </div>
+        </li>
+        <!--<li><a href="#">item 5</a></li>-->
+    </ul>
+
 </nav>
 
 <!-- Header -->

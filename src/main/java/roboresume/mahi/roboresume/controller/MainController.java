@@ -224,6 +224,7 @@ else
         System.out.println(njob.getJobskills());
         return "redirect:/addskilltojob/" + id;
     }
+
     @GetMapping("/viewresume")
     public String PostResume( Principal principal,Model model)
     {
