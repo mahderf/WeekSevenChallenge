@@ -25,7 +25,7 @@
                             <option th:each="aSkill:${skilllist}" th:value="${aSkill.id}" th:text="${aSkill.skillname}"></option>
                         </select><br/>
                         <p><input type="submit" value="Add a skill!"></p>
-                        <a href="/addskills">Add New Skills</a>
+                        <a th:href="@{/addnewskilltojob/{id}(id=${job.id})}">Add New Skills</a>
                     </form>
                 </div>
             </div>

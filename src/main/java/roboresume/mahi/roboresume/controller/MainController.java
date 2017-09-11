@@ -225,21 +225,32 @@ else
         return "redirect:/addskilltojob/" + id;
     }
 
-//    @GetMapping("/addnewskilltojob/{jobid}")
-//    public String newSkilltojob(@PathVariable("jobid") long id, Model model)
-//    {
-//        Job tjob= new Job();
-//        Skills nskill= new Skills();
-//
-//        model.addAttribute("newskill", new Skills());
-//        return "newskillto job";
-//
-//    }
+    @GetMapping("/addnewskilltojob/{id}")
+    public String newSkilltojob(@PathVariable("id") long id, Model model)
+    {
+        Job tjob= new Job();
+        Skills nskill= new Skills();
+        nskill.addJob(jobRepository.findOne(id));
+        Iterable<Job>jb=nskill.getJobs();
+        for(Job n:jb){
+            System.out.println("job id-----------"+n.getId());
+        }
+        model.addAttribute("newskill", nskill);
+        return "newskilltojob";
 
-//    @PostMapping("/addnewskilltojob")
-//    {
-//
-//    }
+    }
+
+    @PostMapping("/addnewskilltojob")
+            public String postskill(@Valid @ModelAttribute("newskill") Skills nskill,
+                                    BindingResult bindingResult, Model model)
+    {
+        if(bindingResult.hasErrors())
+        {
+            return "addeducation";
+        }
+        skillsRepository.save(nskill);
+        return"redirect: /llistjobs";
+    }
 
     @GetMapping("/viewresume")
     public String PostResume( Principal principal,Model model)

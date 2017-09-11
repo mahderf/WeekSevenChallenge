@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="base :: headpart">
+
+</head>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav th:replace="base :: navpart">
+</nav>
+<header class="masthead">
+    <div class="header-content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                    <form action="#" th:action="@{addnewskilltojob}" th:object="${newskill}" method="post">
+                        <input type="text" th:field="*{jobs.id}">
+                        <input type="hidden" th:field="*{id}">
+                        <h2>Enter a Skill<small></small></h2>
+                        <hr class="colorgraph">
+                        <div class="form-group">
+                            <input type="text" th:field="*{skillname}" name="skillname" id="skillname" class="form-control input-lg" placeholder="Skill" tabindex="3">
+                        </div>
+                        <div th:if="${#fields.hasErrors('skillname')}"  th:errors="*{skillname}"
+                             class="well alert alert-warning" role="alert"></div>
+                        <div class="form-group">
+                            <input type="text" th:field="*{rating}" name="rating" id="rating" class="form-control input-lg" placeholder="Rate the Skill(skilled,familiar or proficient)" tabindex="4">
+                        </div>
+                        <div th:if="${#fields.hasErrors('rating')}"  th:errors="*{rating}"
+                             class="well alert alert-warning" role="alert"></div>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6"><input type="submit" value="Enter" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                            <!--<div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>-->
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Bootstrap core JavaScript -->
+<div th:replace="base :: footer">
+
+</div>
+
+</body>
+
+</html>
+
