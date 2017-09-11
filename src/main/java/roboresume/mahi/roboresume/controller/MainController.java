@@ -225,6 +225,22 @@ else
         return "redirect:/addskilltojob/" + id;
     }
 
+//    @GetMapping("/addnewskilltojob/{jobid}")
+//    public String newSkilltojob(@PathVariable("jobid") long id, Model model)
+//    {
+//        Job tjob= new Job();
+//        Skills nskill= new Skills();
+//
+//        model.addAttribute("newskill", new Skills());
+//        return "newskillto job";
+//
+//    }
+
+//    @PostMapping("/addnewskilltojob")
+//    {
+//
+//    }
+
     @GetMapping("/viewresume")
     public String PostResume( Principal principal,Model model)
     {
